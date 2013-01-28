@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: yaf_view.h 329002 2013-01-07 12:55:53Z laruence $ */
@@ -48,7 +48,7 @@ typedef int(*yaf_body_write_func)(const char *str, uint str_length TSRMLS_DC);
 		EG(scope) = yaf_view_simple_ce; \
 		seg = (yaf_view_simple_buffer *)emalloc(sizeof(yaf_view_simple_buffer)); \
 		memset(seg, 0, sizeof(yaf_view_simple_buffer)); \
-		seg->prev  	 = YAF_G(buffer);\
+		seg->prev		 = YAF_G(buffer);\
 		YAF_G(buffer) = seg; \
 		YAF_G(buf_nesting)++;\
 	} while (0)
@@ -56,9 +56,9 @@ typedef int(*yaf_body_write_func)(const char *str, uint str_length TSRMLS_DC);
 #define YAF_RESTORE_OUTPUT_BUFFER(seg) \
 	do { \
 		EG(scope) 			= old_scope; \
-		YAF_G(buffer)  		= seg->prev; \
+		YAF_G(buffer)			= seg->prev; \
 		if (!(--YAF_G(buf_nesting))) { \
-		    OG(php_body_write) 	= (yaf_body_write_func)YAF_G(owrite_handler); \
+				OG(php_body_write) 	= (yaf_body_write_func)YAF_G(owrite_handler); \
 			if (YAF_G(buffer)) { \
 				php_error_docref(NULL TSRMLS_CC, E_ERROR, "Yaf output buffer collapsed"); \
 			} else { \

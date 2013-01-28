@@ -8,7 +8,7 @@ yaf.lowcase_path=0
 yaf.throw_exception=0
 yaf.catch_exception=1
 --FILE--
-<?php 
+<?php
 require "build.inc";
 startup();
 
@@ -20,21 +20,21 @@ $config = array(
 
 file_put_contents(APPLICATION_PATH . "/controllers/Index.php", <<<PHP
 <?php
-   class IndexController extends Yaf_Controller_Abstract {
-       public \$actions = array(
-          "index" => "controllers/IndexAction.php",
-       );
-   }
+	 class IndexController extends Yaf_Controller_Abstract {
+			 public \$actions = array(
+					"index" => "controllers/IndexAction.php",
+			 );
+	 }
 PHP
 );
 
 file_put_contents(APPLICATION_PATH . "/controllers/IndexAction.php", <<<PHP
 <?php
-   class IndexAction extends Yaf_Action_Abstract {
-       public function execute() {
-            return FALSE;
-       }
-   }
+	 class IndexAction extends Yaf_Action_Abstract {
+			 public function execute() {
+						return FALSE;
+			 }
+	 }
 PHP
 );
 
@@ -46,7 +46,7 @@ echo "Okey";
 ?>
 --CLEAN--
 <?php
-require "build.inc"; 
+require "build.inc";
 shutdown();
 ?>
 --EXPECTF--

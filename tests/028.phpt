@@ -12,7 +12,7 @@ startup();
 $view = new Yaf_View_Simple(dirname(__FILE__));
 
 $view->assign("name", "laruence");
-$tpl  =  APPLICATION_PATH . '/tpls/foo.phtml';
+$tpl	=	APPLICATION_PATH . '/tpls/foo.phtml';
 
 file_put_contents($tpl, <<<HTML
 okey
@@ -24,7 +24,7 @@ echo $view->render($tpl);
 --CLEAN--
 <?php
 /* unlink foo2.phtml permission denied */
-require "build.inc"; 
+require "build.inc";
 shutdown();
 ?>
 --EXPECTF--

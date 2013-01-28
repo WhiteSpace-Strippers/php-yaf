@@ -4,7 +4,7 @@ Check for Yaf_Application
 <?php if (!extension_loaded("yaf")) print "skip"; ?>
 --INI--
 --FILE--
-<?php 
+<?php
 $config = array(
 	"application" => array(
 		"directory" => realpath(dirname(__FILE__)),

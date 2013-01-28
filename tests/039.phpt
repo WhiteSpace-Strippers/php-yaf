@@ -13,20 +13,20 @@ startup();
 
 $view = new Yaf_View_Simple(DIR_ROOT);
 $view->assign("name", "laruence");
-$tpl  =  APPLICATION_PATH . '/tpls/foo.phtml';
-$tpl2  =  APPLICATION_PATH . '/tpls/foo2.phtml';
+$tpl	=	APPLICATION_PATH . '/tpls/foo.phtml';
+$tpl2	=	APPLICATION_PATH . '/tpls/foo2.phtml';
 
 file_put_contents($tpl, <<<HTML
 <?php
-   echo \$this->render(\$tpl);
+	 echo \$this->render(\$tpl);
 ?>
 HTML
 );
 
 file_put_contents($tpl2, <<<HTML
 <?php
-   if ((1) { //syntax error
-   }
+	 if ((1) { //syntax error
+	 }
 ?>
 HTML
 );
@@ -36,7 +36,7 @@ echo $view->render($tpl, array('tpl' => $tpl2));
 --CLEAN--
 <?php
 /* unlink foo2.phtml permission denied */
-require "build.inc"; 
+require "build.inc";
 shutdown();
 ?>
 --EXPECTF--

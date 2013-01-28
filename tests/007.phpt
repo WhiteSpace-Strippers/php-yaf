@@ -3,11 +3,11 @@ Check for Yaf_Config_Simple
 --SKIPIF--
 <?php if (!extension_loaded("yaf")) print "skip"; ?>
 --FILE--
-<?php 
+<?php
 $config = array(
 	'section1' => array(
 		'name' => 'value',
-		'dummy' =>  'foo',
+		'dummy' =>	'foo',
 	),
 	'section2' => "laruence",
 );
@@ -47,18 +47,18 @@ var_dump($sick->total);
 --EXPECTF--
 Yaf_Config_Simple Object
 (
-    [_config:protected] => Array
-        (
-            [section1] => Array
-                (
-                    [name] => value
-                    [dummy] => foo
-                )
+		[_config:protected] => Array
+				(
+						[section1] => Array
+								(
+										[name] => value
+										[dummy] => foo
+								)
 
-            [section2] => laruence
-        )
+						[section2] => laruence
+				)
 
-    [_readonly:protected] => 1
+		[_readonly:protected] => 1
 )
 bool(true)
 bool(false)
@@ -66,27 +66,27 @@ Isset config3 section:bool(true)
 Config3 readonly:bool(false)
 section1=>Yaf_Config_Simple Object
 (
-    [_config:protected] => Array
-        (
-            [name] => value
-            [dummy] => foo
-        )
+		[_config:protected] => Array
+				(
+						[name] => value
+						[dummy] => foo
+				)
 
-    [_readonly:protected] => 
+		[_readonly:protected] =>
 )
 
 section2=>laruence
 new=>value
 Array
 (
-    [section1] => Array
-        (
-            [name] => value
-            [dummy] => foo
-        )
+		[section1] => Array
+				(
+						[name] => value
+						[dummy] => foo
+				)
 
-    [section2] => laruence
-    [new] => value
+		[section2] => laruence
+		[new] => value
 )
 bool(false)
 bool(false)

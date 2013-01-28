@@ -5,14 +5,14 @@
  * @author {&$AUTHOR&}
  */
 class SampleModel {
-    public function __construct() {
-    }   
-    
-    public function selectSample() {
-        return 'Hello World!';
-    }
+		public function __construct() {
+		}
 
-    public function insertSample($arrInfo) {
-        return true;
-    }
+		public function selectSample() {
+				return 'Hello World!';
+		}
+
+		public function insertSample($arrInfo) {
+				return true;
+		}
 }

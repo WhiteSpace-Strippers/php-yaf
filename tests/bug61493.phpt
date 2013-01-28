@@ -8,7 +8,7 @@ littlemiaor at gmail dot com
 <?php
 
 $config = new Yaf_Config_Simple(array(
-    'foo' => 'bar',
+		'foo' => 'bar',
 ), false);
 
 unset($config['foo']);
@@ -17,9 +17,9 @@ print_r($config);
 --EXPECTF--
 Yaf_Config_Simple Object
 (
-    [_config:protected] => Array
-        (
-        )
+		[_config:protected] => Array
+				(
+				)
 
-    [_readonly:protected] => 
+		[_readonly:protected] =>
 )

@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: yaf_exception.c 329197 2013-01-18 05:55:37Z laruence $ */
@@ -89,7 +89,7 @@ void yaf_throw_exception(long code, char *message TSRMLS_DC) {
 
 	if ((code & YAF_ERR_BASE) == YAF_ERR_BASE
 			&& yaf_buildin_exceptions[YAF_EXCEPTION_OFFSET(code)]) {
-		base_exception  = yaf_buildin_exceptions[YAF_EXCEPTION_OFFSET(code)];
+		base_exception	= yaf_buildin_exceptions[YAF_EXCEPTION_OFFSET(code)];
 	}
 
 	zend_throw_exception(base_exception, message, code TSRMLS_CC);
@@ -100,10 +100,10 @@ void yaf_throw_exception(long code, char *message TSRMLS_DC) {
 /** {{{ proto Yaf_Exception::__construct($mesg = 0, $code = 0, Exception $previous = NULL)
 */
 PHP_METHOD(yaf_exception, __construct) {
-	char  	*message = NULL;
-	zval  	*object, *previous = NULL;
+	char		*message = NULL;
+	zval		*object, *previous = NULL;
 	int 	message_len, code = 0;
-	int    	argc = ZEND_NUM_ARGS();
+	int			argc = ZEND_NUM_ARGS();
 
 	if (zend_parse_parameters_ex(ZEND_PARSE_PARAMS_QUIET, argc TSRMLS_CC, "|slO!", &message, &message_len, &code, &previous, yaf_get_exception_base(0 TSRMLS_CC)) == FAILURE) {
 		php_error_docref(NULL TSRMLS_CC, E_ERROR, "Wrong parameters for Exception([string $exception [, long $code [, Exception $previous = NULL]]])");
@@ -163,7 +163,7 @@ YAF_STARTUP_FUNCTION(exception) {
 	yaf_exception_ce = zend_register_internal_class_ex(&ce, yaf_get_exception_base(0 TSRMLS_CC), NULL TSRMLS_CC);
 	zend_declare_property_null(yaf_exception_ce, ZEND_STRL("message"), 	ZEND_ACC_PROTECTED TSRMLS_CC);
 	zend_declare_property_long(yaf_exception_ce, ZEND_STRL("code"), 0,	ZEND_ACC_PROTECTED TSRMLS_CC);
-	zend_declare_property_null(yaf_exception_ce, ZEND_STRL("previous"),  ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(yaf_exception_ce, ZEND_STRL("previous"),	ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	YAF_INIT_CLASS_ENTRY(startup_ce, "Yaf_Exception_StartupError", "Yaf\\Exception\\StartupError", NULL);
 	yaf_buildin_exceptions[YAF_EXCEPTION_OFFSET(YAF_ERR_STARTUP_FAILED)] = zend_register_internal_class_ex(&startup_ce, yaf_exception_ce, NULL TSRMLS_CC);

@@ -3,10 +3,10 @@ Check for Yaf_Registry
 --SKIPIF--
 <?php if (!extension_loaded("yaf")) print "skip"; ?>
 --FILE--
-<?php 
+<?php
 $str = "Ageli Platform";
 
-Yaf_Registry::set("name",  $str);
+Yaf_Registry::set("name",	$str);
 unset($str);
 
 var_dump(Yaf_Registry::get("name"));

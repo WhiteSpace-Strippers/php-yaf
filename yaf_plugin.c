@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: yaf_plugin.c 329197 2013-01-18 05:55:37Z laruence $ */
@@ -95,11 +95,11 @@ PHP_METHOD(yaf_plugin, preResponse) {
 /** {{{ yaf_plugin_methods
 */
 zend_function_entry yaf_plugin_methods[] = {
-	PHP_ME(yaf_plugin, routerStartup,  		 plugin_arg, ZEND_ACC_PUBLIC)
-	PHP_ME(yaf_plugin, routerShutdown,  		 plugin_arg, ZEND_ACC_PUBLIC)
-	PHP_ME(yaf_plugin, dispatchLoopStartup,   plugin_arg, ZEND_ACC_PUBLIC)
-	PHP_ME(yaf_plugin, dispatchLoopShutdown,  plugin_arg, ZEND_ACC_PUBLIC)
-	PHP_ME(yaf_plugin, preDispatch,  		 plugin_arg, ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_plugin, routerStartup,			 plugin_arg, ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_plugin, routerShutdown,			 plugin_arg, ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_plugin, dispatchLoopStartup,	 plugin_arg, ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_plugin, dispatchLoopShutdown,	plugin_arg, ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_plugin, preDispatch,			 plugin_arg, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_plugin, postDispatch, 		 plugin_arg, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_plugin, preResponse, 			 plugin_arg, ZEND_ACC_PUBLIC)
 	{NULL, NULL, NULL}
@@ -107,11 +107,11 @@ zend_function_entry yaf_plugin_methods[] = {
 
 #ifdef YAF_HAVE_NAMESPACE
 zend_function_entry yaf_plugin_methods_ns[] = {
-	PHP_ME(yaf_plugin, routerStartup,  		 plugin_arg_ns, ZEND_ACC_PUBLIC)
-	PHP_ME(yaf_plugin, routerShutdown,  		 plugin_arg_ns, ZEND_ACC_PUBLIC)
-	PHP_ME(yaf_plugin, dispatchLoopStartup,   plugin_arg_ns, ZEND_ACC_PUBLIC)
-	PHP_ME(yaf_plugin, dispatchLoopShutdown,  plugin_arg_ns, ZEND_ACC_PUBLIC)
-	PHP_ME(yaf_plugin, preDispatch,  		 plugin_arg_ns, ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_plugin, routerStartup,			 plugin_arg_ns, ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_plugin, routerShutdown,			 plugin_arg_ns, ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_plugin, dispatchLoopStartup,	 plugin_arg_ns, ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_plugin, dispatchLoopShutdown,	plugin_arg_ns, ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_plugin, preDispatch,			 plugin_arg_ns, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_plugin, postDispatch, 		 plugin_arg_ns, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_plugin, preResponse, 			 plugin_arg_ns, ZEND_ACC_PUBLIC)
 	{NULL, NULL, NULL}

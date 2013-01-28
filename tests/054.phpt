@@ -8,9 +8,9 @@ yaf.lowcase_path=0
 --FILE--
 <?php
 try {
-    $config = new Yaf_Config_Ini(dirname(__FILE__), "test");
+		$config = new Yaf_Config_Ini(dirname(__FILE__), "test");
 } catch (Exception $e) {
-    var_dump($e->getMessage());
+		var_dump($e->getMessage());
 }
 
 $request = new Yaf_Request_Simple(NULL);

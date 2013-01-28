@@ -6,7 +6,7 @@ Check for Yaf_Loader::set/get(library_path)
 yaf.use_spl_autoload=0
 yaf.lowcase_path=0
 --FILE--
-<?php 
+<?php
 $loader = Yaf_Loader::getInstance('/foo', '/bar');
 $loader->registerLocalNamespace(array("Foo"));
 

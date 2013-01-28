@@ -7,7 +7,7 @@ yaf.use_spl_autoload=0
 yaf.library="/php/global/dir"
 yar.environ="product"
 --FILE--
-<?php 
+<?php
 $config = array(
 		"application" => array(
 			"directory" => realpath(dirname(__FILE__)),
@@ -19,7 +19,7 @@ $config = array(
 		);
 
 function main() {
-    $dummy = new NoExistsController();
+		$dummy = new NoExistsController();
 }
 
 $app = new Yaf_Application($config);

@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: simple.c 329197 2013-01-18 05:55:37Z laruence $ */
@@ -64,14 +64,14 @@ yaf_request_t * yaf_request_simple_instance(yaf_request_t *this_ptr, zval *modul
 	if (module || controller || action) {
 		if (!module || Z_TYPE_P(module) != IS_STRING) {
 			zend_update_property_string(yaf_request_simple_ce, instance,
-				   	ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_MODULE), YAF_G(default_module) TSRMLS_CC);
+					 	ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_MODULE), YAF_G(default_module) TSRMLS_CC);
 		} else {
 			zend_update_property(yaf_request_simple_ce, instance, ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_MODULE), module TSRMLS_CC);
 		}
 
 		if (!controller || Z_TYPE_P(controller) != IS_STRING) {
 			zend_update_property_string(yaf_request_simple_ce, instance,
-				   	ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_CONTROLLER), YAF_G(default_controller) TSRMLS_CC);
+					 	ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_CONTROLLER), YAF_G(default_controller) TSRMLS_CC);
 		} else {
 			zend_update_property(yaf_request_simple_ce, instance,
 					ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_CONTROLLER), controller TSRMLS_CC);
@@ -79,10 +79,10 @@ yaf_request_t * yaf_request_simple_instance(yaf_request_t *this_ptr, zval *modul
 
 		if (!action || Z_TYPE_P(action) != IS_STRING) {
 			zend_update_property_string(yaf_request_simple_ce, instance,
-				   	ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_ACTION), YAF_G(default_action) TSRMLS_CC);
+					 	ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_ACTION), YAF_G(default_action) TSRMLS_CC);
 		} else {
 			zend_update_property(yaf_request_simple_ce, instance,
-				   	ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_ACTION), action TSRMLS_CC);
+					 	ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_ACTION), action TSRMLS_CC);
 		}
 
 		zend_update_property_bool(yaf_request_simple_ce, instance, ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_ROUTED), 1 TSRMLS_CC);
@@ -148,7 +148,7 @@ PHP_METHOD(yaf_request_simple, __construct) {
 		if ((params && IS_ARRAY != Z_TYPE_P(params))) {
 			YAF_UNINITIALIZED_OBJECT(getThis());
 			yaf_trigger_error(YAF_ERR_TYPE_ERROR TSRMLS_CC,
-				   	"Expects the params is an array", yaf_request_simple_ce->name);
+					 	"Expects the params is an array", yaf_request_simple_ce->name);
 			RETURN_FALSE;
 		}
 
@@ -164,7 +164,7 @@ YAF_REQUEST_METHOD(yaf_request_simple, Query, 	YAF_GLOBAL_VARS_GET);
 
 /** {{{ proto public Yaf_Request_Simple::getPost(mixed $name, mixed $default = NULL)
 */
-YAF_REQUEST_METHOD(yaf_request_simple, Post,  	YAF_GLOBAL_VARS_POST);
+YAF_REQUEST_METHOD(yaf_request_simple, Post,		YAF_GLOBAL_VARS_POST);
 /* }}} */
 
 /** {{{ proto public Yaf_Request_Simple::getRequet(mixed $name, mixed $default = NULL)
@@ -272,7 +272,7 @@ YAF_STARTUP_FUNCTION(request_simple){
 	yaf_request_simple_ce = zend_register_internal_class_ex(&ce, yaf_request_ce, NULL TSRMLS_CC);
 	yaf_request_simple_ce->ce_flags |= ZEND_ACC_FINAL_CLASS;
 
-	zend_declare_class_constant_string(yaf_request_simple_ce, ZEND_STRL("SCHEME_HTTP"),  "http" TSRMLS_CC);
+	zend_declare_class_constant_string(yaf_request_simple_ce, ZEND_STRL("SCHEME_HTTP"),	"http" TSRMLS_CC);
 	zend_declare_class_constant_string(yaf_request_simple_ce, ZEND_STRL("SCHEME_HTTPS"), "https" TSRMLS_CC);
 
 	return SUCCESS;

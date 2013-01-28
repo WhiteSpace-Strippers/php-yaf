@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
  */
 
 /* $Id: regex.c 329197 2013-01-18 05:55:37Z laruence $ */
@@ -38,9 +38,9 @@ zend_class_entry *yaf_route_regex_ce;
  */
 ZEND_BEGIN_ARG_INFO_EX(yaf_route_regex_construct_arginfo, 0, 0, 2)
 	ZEND_ARG_INFO(0, match)
-    ZEND_ARG_ARRAY_INFO(0, route, 0)
-    ZEND_ARG_ARRAY_INFO(0, map, 1)
-    ZEND_ARG_ARRAY_INFO(0, verify, 1)
+		ZEND_ARG_ARRAY_INFO(0, route, 0)
+		ZEND_ARG_ARRAY_INFO(0, map, 1)
+		ZEND_ARG_ARRAY_INFO(0, verify, 1)
 ZEND_END_ARG_INFO()
 /* }}} */
 
@@ -107,9 +107,9 @@ static zval * yaf_route_regex_match(yaf_route_t *route, char *uir, int len TSRML
 			zval_ptr_dtor(&subparts);
 			return NULL;
 		} else {
-			zval  *ret, **name, **ppzval;
+			zval	*ret, **name, **ppzval;
 			char	*key = NULL;
-			uint	len  = 0;
+			uint	len	= 0;
 			ulong	idx	 = 0;
 			HashTable 	*ht;
 
@@ -226,7 +226,7 @@ PHP_METHOD(yaf_route_regex, route) {
 
 	if (!request || IS_OBJECT != Z_TYPE_P(request)
 			|| !instanceof_function(Z_OBJCE_P(request), yaf_request_ce TSRMLS_CC)) {
-		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Expects a %s instance",  yaf_request_ce->name);
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Expects a %s instance",	yaf_request_ce->name);
 		RETURN_FALSE;
 	}
 
@@ -240,7 +240,7 @@ PHP_METHOD(yaf_route_regex, __construct) {
 	zval 		*match, *route, *map = NULL, *verify = NULL;
 	yaf_route_t	*self = getThis();
 
-	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "za|aa", &match, &route, &map, &verify) ==  FAILURE) {
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "za|aa", &match, &route, &map, &verify) ==	FAILURE) {
 		YAF_UNINITIALIZED_OBJECT(getThis());
 		return;
 	}
@@ -253,7 +253,7 @@ PHP_METHOD(yaf_route_regex, __construct) {
 
 	if (verify && IS_ARRAY != Z_TYPE_P(verify)) {
 		YAF_UNINITIALIZED_OBJECT(getThis());
-		yaf_trigger_error(YAF_ERR_TYPE_ERROR TSRMLS_CC, "Expects an array as verify parmater",  yaf_route_regex_ce->name);
+		yaf_trigger_error(YAF_ERR_TYPE_ERROR TSRMLS_CC, "Expects an array as verify parmater",	yaf_route_regex_ce->name);
 		RETURN_FALSE;
 	}
 
@@ -272,7 +272,7 @@ PHP_METHOD(yaf_route_regex, __construct) {
 zend_function_entry yaf_route_regex_methods[] = {
 	PHP_ME(yaf_route_regex, __construct, yaf_route_regex_construct_arginfo, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
 	PHP_ME(yaf_route_regex, route, yaf_route_route_arginfo, ZEND_ACC_PUBLIC)
-    {NULL, NULL, NULL}
+		{NULL, NULL, NULL}
 };
 /* }}} */
 
@@ -285,9 +285,9 @@ YAF_STARTUP_FUNCTION(route_regex) {
 	zend_class_implements(yaf_route_regex_ce TSRMLS_CC, 1, yaf_route_ce);
 	yaf_route_regex_ce->ce_flags |= ZEND_ACC_FINAL_CLASS;
 
-	zend_declare_property_null(yaf_route_regex_ce, ZEND_STRL(YAF_ROUTE_PROPETY_NAME_MATCH),  ZEND_ACC_PROTECTED TSRMLS_CC);
-	zend_declare_property_null(yaf_route_regex_ce, ZEND_STRL(YAF_ROUTE_PROPETY_NAME_ROUTE),  ZEND_ACC_PROTECTED TSRMLS_CC);
-	zend_declare_property_null(yaf_route_regex_ce, ZEND_STRL(YAF_ROUTE_PROPETY_NAME_MAP),    ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(yaf_route_regex_ce, ZEND_STRL(YAF_ROUTE_PROPETY_NAME_MATCH),	ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(yaf_route_regex_ce, ZEND_STRL(YAF_ROUTE_PROPETY_NAME_ROUTE),	ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(yaf_route_regex_ce, ZEND_STRL(YAF_ROUTE_PROPETY_NAME_MAP),		ZEND_ACC_PROTECTED TSRMLS_CC);
 	zend_declare_property_null(yaf_route_regex_ce, ZEND_STRL(YAF_ROUTE_PROPETY_NAME_VERIFY), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	return SUCCESS;

@@ -6,14 +6,14 @@ Bug #63381 ($_SERVER['SCRIPT_NAME'] changed by yaf)
 yaf.use_spl_autoload=1
 yaf.lowcase_path=0
 --FILE--
-<?php 
+<?php
 require "build.inc";
 startup();
 
 $server = $_SERVER;
 $cookie = $_COOKIE;
-$post   = $_POST;
-$get    = $_GET;
+$post	 = $_POST;
+$get		= $_GET;
 
 $config = array(
 	"application" => array(
@@ -23,19 +23,19 @@ $config = array(
 
 file_put_contents(APPLICATION_PATH . "/controllers/Index.php", <<<PHP
 <?php
-   class IndexController extends Yaf_Controller_Abstract {
-       public function indexAction() {
-       }
-   }
+	 class IndexController extends Yaf_Controller_Abstract {
+			 public function indexAction() {
+			 }
+	 }
 PHP
 );
 
 file_put_contents(APPLICATION_PATH . "/controllers/Dummy.php", <<<PHP
 <?php
-   class DummyController extends Yaf_Controller_Abstract {
-       public function indexAction() {
-       }
-   }
+	 class DummyController extends Yaf_Controller_Abstract {
+			 public function indexAction() {
+			 }
+	 }
 PHP
 );
 
@@ -52,7 +52,7 @@ var_dump($post === $_POST);
 ?>
 --CLEAN--
 <?php
-require "build.inc"; 
+require "build.inc";
 shutdown();
 ?>
 --EXPECTF--

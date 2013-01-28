@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: simple.c 329200 2013-01-18 06:26:40Z laruence $ */
@@ -38,8 +38,8 @@ zend_class_entry *yaf_route_simple_ce;
  */
 ZEND_BEGIN_ARG_INFO_EX(yaf_route_simple_construct_arginfo, 0, 0, 3)
 	ZEND_ARG_INFO(0, module_name)
-    ZEND_ARG_INFO(0, controller_name)
-    ZEND_ARG_INFO(0, action_name)
+		ZEND_ARG_INFO(0, controller_name)
+		ZEND_ARG_INFO(0, action_name)
 ZEND_END_ARG_INFO()
 /* }}} */
 
@@ -79,7 +79,7 @@ yaf_route_t * yaf_route_simple_instance(yaf_route_t *this_ptr, zval *module, zva
 	yaf_route_t *instance;
 
 	if (this_ptr) {
-		instance  = this_ptr;
+		instance	= this_ptr;
 	} else {
 		MAKE_STD_ZVAL(instance);
 		object_init_ex(instance, yaf_route_simple_ce);

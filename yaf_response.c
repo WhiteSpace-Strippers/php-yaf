@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: yaf_response.c 329197 2013-01-18 05:55:37Z laruence $ */
@@ -36,7 +36,7 @@
 zend_class_entry *yaf_response_ce;
 
 /** {{{ ARG_INFO
- *  */
+ *	*/
 ZEND_BEGIN_ARG_INFO_EX(yaf_response_void_arginfo, 0, 0, 0)
 ZEND_END_ARG_INFO()
 
@@ -253,7 +253,7 @@ PHP_METHOD(yaf_response, __destruct) {
 /** {{{ proto public Yaf_Response_Abstract::appenBody($body, $name = NULL)
 */
 PHP_METHOD(yaf_response, appendBody) {
-	char		  	*body, *name = NULL;
+	char				*body, *name = NULL;
 	uint			body_len, name_len = 0;
 	yaf_response_t 	*self;
 
@@ -274,7 +274,7 @@ PHP_METHOD(yaf_response, appendBody) {
 /** {{{ proto public Yaf_Response_Abstract::prependBody($body, $name = NULL)
 */
 PHP_METHOD(yaf_response, prependBody) {
-	char		  	*body, *name = NULL;
+	char				*body, *name = NULL;
 	uint			body_len, name_len = 0;
 	yaf_response_t 	*self;
 
@@ -324,7 +324,7 @@ PHP_METHOD(yaf_response, clearHeaders) {
 */
 PHP_METHOD(yaf_response, setRedirect) {
 	char *url;
-	uint  url_len;
+	uint	url_len;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &url, &url_len) == FAILURE) {
 		return;
@@ -341,7 +341,7 @@ PHP_METHOD(yaf_response, setRedirect) {
 /** {{{ proto public Yaf_Response_Abstract::setBody($body, $name = NULL)
 */
 PHP_METHOD(yaf_response, setBody) {
-	char		  	*body, *name = NULL;
+	char				*body, *name = NULL;
 	uint			body_len, name_len = 0;
 	yaf_response_t 	*self;
 
@@ -434,7 +434,7 @@ PHP_METHOD(yaf_response, __clone) {
 */
 zend_function_entry yaf_response_methods[] = {
 	PHP_ME(yaf_response, __construct, 	yaf_response_void_arginfo, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
-	PHP_ME(yaf_response, __destruct,  	yaf_response_void_arginfo, ZEND_ACC_PUBLIC|ZEND_ACC_DTOR)
+	PHP_ME(yaf_response, __destruct,		yaf_response_void_arginfo, ZEND_ACC_PUBLIC|ZEND_ACC_DTOR)
 	PHP_ME(yaf_response, __clone,		NULL, ZEND_ACC_PRIVATE)
 	PHP_ME(yaf_response, __toString,	NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_response, setBody,		yaf_response_set_body_arginfo, ZEND_ACC_PUBLIC)
@@ -445,7 +445,7 @@ zend_function_entry yaf_response_methods[] = {
 	PHP_ME(yaf_response, setHeader,		NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_response, setAllHeaders,	NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_response, getHeader,		NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(yaf_response, clearHeaders,  NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_response, clearHeaders,	NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_response, setRedirect,	yaf_response_set_redirect_arginfo, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_response, response,		yaf_response_void_arginfo, ZEND_ACC_PUBLIC)
 	{NULL, NULL, NULL}

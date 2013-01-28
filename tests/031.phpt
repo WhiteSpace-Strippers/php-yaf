@@ -5,17 +5,17 @@ Check for application.dispatcher.defaultRoute
 --INI--
 yaf.library="/php/global/dir"
 --FILE--
-<?php 
+<?php
 $config = array(
 	"application" => array(
 		"directory" => realpath(dirname(__FILE__)),
-        "dispatcher" => array(
-            "defaultRoute" => array(
-               "type" => "map",
-               "delimiter" => '##',
-               "controllerPrefer" => 1,
-            ),
-         ),
+				"dispatcher" => array(
+						"defaultRoute" => array(
+							 "type" => "map",
+							 "delimiter" => '##',
+							 "controllerPrefer" => 1,
+						),
+				 ),
 	),
 );
 
@@ -25,10 +25,10 @@ print_r($app->getDispatcher()->getRouter()->getRoutes());
 --EXPECTF--
 Array
 (
-    [_default] => Yaf_Route_Map Object
-        (
-            [_ctl_router:protected] => 1
-            [_delimeter:protected] => ##
-        )
+		[_default] => Yaf_Route_Map Object
+				(
+						[_ctl_router:protected] => 1
+						[_delimeter:protected] => ##
+				)
 
 )

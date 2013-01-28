@@ -3,7 +3,7 @@ Bug (mem leak and crash in Yaf_Config_Ini)
 --SKIPIF--
 <?php if (!extension_loaded("yaf")) print "skip"; ?>
 --FILE--
-<?php 
+<?php
 $config = new Yaf_Config_Ini;
 
 var_dump($config->get("\0"));

@@ -3,12 +3,12 @@ Check for Yaf_Route_Regex
 --SKIPIF--
 <?php if (!extension_loaded("yaf")) print "skip"; ?>
 --FILE--
-<?php 
+<?php
 $request = new Yaf_Request_Http("/subdir/ap/1.2/name/value", "/subdir");
 
 $router = new Yaf_Router();
 
-$route  = new Yaf_Route_regex(
+$route	= new Yaf_Route_regex(
 	"#/subdir/(.*)#",
 	array(
 		"action" => "version",
@@ -19,7 +19,7 @@ $route  = new Yaf_Route_regex(
 
 $router->addRoute("subdir", $route)->addRoute("ap", new Yaf_Route_Regex(
 	"#^/ap/([^/]*)/*#i",
-    array(
+		array(
 		"action" => 'ap',
 	),
 	array(

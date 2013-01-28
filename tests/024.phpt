@@ -5,7 +5,7 @@ Check for Yaf_Loader::getInstace() paramters
 --INI--
 yaf.library="/php/global/dir"
 --FILE--
-<?php 
+<?php
 $loader = Yaf_Loader::getInstance('/foo', '/bar');
 
 var_dump($loader->getLibraryPath());

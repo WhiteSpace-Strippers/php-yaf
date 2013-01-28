@@ -7,7 +7,7 @@ yaf.use_spl_autoload=0
 yaf.lowcase_path=0
 
 --FILE--
-<?php 
+<?php
 require "build.inc";
 startup();
 
@@ -19,20 +19,20 @@ $config = array(
 
 file_put_contents(APPLICATION_PATH . "/Bootstrap.php", <<<PHP
 <?php
-   class Bootstrap extends Yaf_Bootstrap_Abstract {
-        public function _initReturn(Yaf_Dispatcher \$dispatcher) {
-            \$dispatcher->returnResponse(true);
-        }
-   }
+	 class Bootstrap extends Yaf_Bootstrap_Abstract {
+				public function _initReturn(Yaf_Dispatcher \$dispatcher) {
+						\$dispatcher->returnResponse(true);
+				}
+	 }
 PHP
 );
 
 file_put_contents(APPLICATION_PATH . "/controllers/Index.php", <<<PHP
 <?php
-   class IndexController extends Yaf_Controller_Abstract {
-         public function indexAction() {
-         }
-   }
+	 class IndexController extends Yaf_Controller_Abstract {
+				 public function indexAction() {
+				 }
+	 }
 PHP
 );
 
@@ -46,7 +46,7 @@ echo $response;
 --CLEAN--
 <?php
 /* unlink foo2.phtml permission denied */
-require "build.inc"; 
+require "build.inc";
 shutdown();
 ?>
 --EXPECTF--

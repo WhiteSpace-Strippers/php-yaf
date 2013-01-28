@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: yaf_router.c 329200 2013-01-18 06:26:40Z laruence $ */
@@ -27,7 +27,7 @@
 #include "yaf_namespace.h"
 #include "yaf_exception.h"
 #include "yaf_application.h" /* for yaf_application_is_module_name */
-#include "yaf_request.h" /* for yaf_request_set_routed */ 
+#include "yaf_request.h" /* for yaf_request_set_routed */
 #include "yaf_router.h"
 #include "yaf_config.h"
 
@@ -60,7 +60,7 @@ yaf_router_t * yaf_router_instance(yaf_router_t *this_ptr TSRMLS_DC) {
 
 	if (!YAF_G(default_route)) {
 static_route:
-	    MAKE_STD_ZVAL(route);
+			MAKE_STD_ZVAL(route);
 		object_init_ex(route, yaf_route_static_ce);
 	} else {
 		route = yaf_route_instance(NULL, YAF_G(default_route) TSRMLS_CC);
@@ -233,13 +233,13 @@ PHP_METHOD(yaf_router, route) {
 }
 /* }}} */
 
-/** {{{  proto public Yaf_Router::addRoute(string $name, Yaf_Route_Interface $route)
+/** {{{	proto public Yaf_Router::addRoute(string $name, Yaf_Route_Interface $route)
  */
 PHP_METHOD(yaf_router, addRoute) {
-	char 	   *name;
-	zval 	   *routes;
+	char 		 *name;
+	zval 		 *routes;
 	yaf_route_t *route;
-	uint	   len = 0;
+	uint		 len = 0;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sz", &name, &len, &route) == FAILURE) {
 		return;
@@ -264,7 +264,7 @@ PHP_METHOD(yaf_router, addRoute) {
 }
 /* }}} */
 
-/** {{{  proto public Yaf_Router::addConfig(Yaf_Config_Abstract $config)
+/** {{{	proto public Yaf_Router::addConfig(Yaf_Config_Abstract $config)
  */
 PHP_METHOD(yaf_router, addConfig) {
 	yaf_config_t *config;
@@ -279,7 +279,7 @@ PHP_METHOD(yaf_router, addConfig) {
 	} else if (IS_ARRAY == Z_TYPE_P(config)) {
 		routes = config;
 	} else {
-		php_error_docref(NULL TSRMLS_CC, E_WARNING,  "Expect a %s instance or an array, %s given", yaf_config_ce->name, zend_zval_type_name(config));
+		php_error_docref(NULL TSRMLS_CC, E_WARNING,	"Expect a %s instance or an array, %s given", yaf_config_ce->name, zend_zval_type_name(config));
 		RETURN_FALSE;
 	}
 
@@ -291,12 +291,12 @@ PHP_METHOD(yaf_router, addConfig) {
 }
 /* }}} */
 
-/** {{{  proto public Yaf_Router::getRoute(string $name)
+/** {{{	proto public Yaf_Router::getRoute(string $name)
  */
 PHP_METHOD(yaf_router, getRoute) {
-	char  *name;
-	uint  len;
-	zval  *routes;
+	char	*name;
+	uint	len;
+	zval	*routes;
 	yaf_route_t **route;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &name, &len) == FAILURE) {
@@ -317,7 +317,7 @@ PHP_METHOD(yaf_router, getRoute) {
 }
 /* }}} */
 
-/** {{{  proto public Yaf_Router::getRoutes(void)
+/** {{{	proto public Yaf_Router::getRoutes(void)
  */
 PHP_METHOD(yaf_router, getRoutes) {
 	zval * routes = zend_read_property(yaf_router_ce, getThis(), ZEND_STRL(YAF_ROUTER_PROPERTY_NAME_ROUTERS), 1 TSRMLS_CC);
@@ -339,7 +339,7 @@ PHP_METHOD(yaf_router, isModuleName) {
 }
 /* }}} */
 
-/** {{{  proto public Yaf_Router::getCurrentRoute(void)
+/** {{{	proto public Yaf_Router::getCurrentRoute(void)
  */
 PHP_METHOD(yaf_router, getCurrentRoute) {
 	zval *route = zend_read_property(yaf_router_ce, getThis(), ZEND_STRL(YAF_ROUTER_PROPERTY_NAME_CURRENT_ROUTE), 1 TSRMLS_CC);
@@ -351,10 +351,10 @@ PHP_METHOD(yaf_router, getCurrentRoute) {
  */
 zend_function_entry yaf_router_methods[] = {
 	PHP_ME(yaf_router, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
-	PHP_ME(yaf_router, addRoute,  NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_router, addRoute,	NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_router, addConfig, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_router, route,	 NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(yaf_router, getRoute,  NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_router, getRoute,	NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_router, getRoutes, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_router, getCurrentRoute, NULL, ZEND_ACC_PUBLIC)
 	{NULL, NULL, NULL}

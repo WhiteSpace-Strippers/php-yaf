@@ -6,7 +6,7 @@ Bug empty template file interrupts forward chain
 yaf.use_spl_autoload=1
 yaf.lowcase_path=0
 --FILE--
-<?php 
+<?php
 require "build.inc";
 startup();
 
@@ -18,22 +18,22 @@ $config = array(
 
 file_put_contents(APPLICATION_PATH . "/controllers/Index.php", <<<PHP
 <?php
-   class IndexController extends Yaf_Controller_Abstract {
-       public function indexAction() {
-           \$this->forward("dummy");
-       }
-       public function dummyAction() {
-       }
-   }
+	 class IndexController extends Yaf_Controller_Abstract {
+			 public function indexAction() {
+					 \$this->forward("dummy");
+			 }
+			 public function dummyAction() {
+			 }
+	 }
 PHP
 );
 
 file_put_contents(APPLICATION_PATH . "/controllers/Dummy.php", <<<PHP
 <?php
-   class DummyController extends Yaf_Controller_Abstract {
-       public function indexAction() {
-       }
-   }
+	 class DummyController extends Yaf_Controller_Abstract {
+			 public function indexAction() {
+			 }
+	 }
 PHP
 );
 
@@ -45,7 +45,7 @@ $response = $app->run();
 ?>
 --CLEAN--
 <?php
-require "build.inc"; 
+require "build.inc";
 shutdown();
 ?>
 --EXPECTF--

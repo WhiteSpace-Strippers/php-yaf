@@ -6,14 +6,14 @@ Check for Yaf_Loader with single class
 yaf.use_spl_autoload=0
 yaf.lowcase_path=0
 --FILE--
-<?php 
+<?php
 $config = array(
 	"application" => array(
 		"directory" => realpath(dirname(__FILE__)),
-        "library" => array(
-            "directory" => "/tmp",
-            "namespace" => "Foo",
-        ),
+				"library" => array(
+						"directory" => "/tmp",
+						"namespace" => "Foo",
+				),
 	),
 );
 $app = new Yaf_Application($config);

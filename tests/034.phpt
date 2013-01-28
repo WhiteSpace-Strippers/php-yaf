@@ -4,18 +4,18 @@ Check for Yaf_View_Simple::eval
 <?php
 if (!extension_loaded("yaf")) print "skip";
 if (substr(PHP_OS, 0, 3) == 'WIN') {
-    die('skip windows has a different absolute path');
+		die('skip windows has a different absolute path');
 }
 ?>
 --FILE--
-<?php 
+<?php
 $view = new Yaf_View_Simple("/tmp");
 
 $tpl = <<<PHP
 <?php
 echo \$name, "\n";
 foreach(\$entry as \$list) {
-   echo "1. ", \$list, "\n";
+	 echo "1. ", \$list, "\n";
 }
 ?>
 <?=\$name?>

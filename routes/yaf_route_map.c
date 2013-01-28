@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: map.c 329197 2013-01-18 05:55:37Z laruence $*/
@@ -37,7 +37,7 @@ zend_class_entry *yaf_route_map_ce;
 /** {{{ ARG_INFO
  */
 ZEND_BEGIN_ARG_INFO_EX(yaf_route_map_construct_arginfo, 0, 0, 0)
-    ZEND_ARG_INFO(0, controller_prefer)
+		ZEND_ARG_INFO(0, controller_prefer)
 	ZEND_ARG_INFO(0, delimiter)
 ZEND_END_ARG_INFO()
 /* }}} */
@@ -48,7 +48,7 @@ yaf_route_t * yaf_route_map_instance(yaf_route_t *this_ptr, zend_bool controller
 	yaf_route_t *instance;
 
 	if (this_ptr) {
-		instance  = this_ptr;
+		instance	= this_ptr;
 	} else {
 		MAKE_STD_ZVAL(instance);
 		object_init_ex(instance, yaf_route_map_ce);
@@ -82,20 +82,20 @@ int yaf_route_map_route(yaf_route_t *route, yaf_request_t *request TSRMLS_DC) {
 	base_uri = zend_read_property(yaf_request_ce, request, ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_BASE), 1 TSRMLS_CC);
 
 	ctl_prefer = zend_read_property(yaf_route_map_ce, route, ZEND_STRL(YAF_ROUTE_MAP_VAR_NAME_CTL_PREFER), 1 TSRMLS_CC);
-	delimer	   = zend_read_property(yaf_route_map_ce, route, ZEND_STRL(YAF_ROUTE_MAP_VAR_NAME_DELIMETER), 1 TSRMLS_CC);
+	delimer		 = zend_read_property(yaf_route_map_ce, route, ZEND_STRL(YAF_ROUTE_MAP_VAR_NAME_DELIMETER), 1 TSRMLS_CC);
 
 	if (base_uri && IS_STRING == Z_TYPE_P(base_uri)
 			&& !strncasecmp(Z_STRVAL_P(zuri), Z_STRVAL_P(base_uri), Z_STRLEN_P(base_uri))) {
-		req_uri  = estrdup(Z_STRVAL_P(zuri) + Z_STRLEN_P(base_uri));
+		req_uri	= estrdup(Z_STRVAL_P(zuri) + Z_STRLEN_P(base_uri));
 	} else {
-		req_uri  = estrdup(Z_STRVAL_P(zuri));
+		req_uri	= estrdup(Z_STRVAL_P(zuri));
 	}
 
 	if (Z_TYPE_P(delimer) == IS_STRING
 			&& Z_STRLEN_P(delimer)) {
 		if ((query_str = strstr(req_uri, Z_STRVAL_P(delimer))) != NULL
 			&& *(query_str - 1) == '/') {
-			tmp  = req_uri;
+			tmp	= req_uri;
 			rest = query_str + Z_STRLEN_P(delimer);
 			if (*rest == '\0') {
 				req_uri 	= estrndup(req_uri, query_str - req_uri);
@@ -103,7 +103,7 @@ int yaf_route_map_route(yaf_route_t *route, yaf_request_t *request TSRMLS_DC) {
 				efree(tmp);
 			} else if (*rest == '/') {
 				req_uri 	= estrndup(req_uri, query_str - req_uri);
-				query_str   = estrdup(rest);
+				query_str	 = estrdup(rest);
 				efree(tmp);
 			} else {
 				query_str = NULL;
@@ -164,7 +164,7 @@ PHP_METHOD(yaf_route_map, __construct) {
 	zend_bool controller_prefer = 0;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "|bs",
-			   	&controller_prefer, &delim, &delim_len) == FAILURE) {
+				 	&controller_prefer, &delim, &delim_len) == FAILURE) {
 		YAF_UNINITIALIZED_OBJECT(getThis());
 		return;
 	}
@@ -194,7 +194,7 @@ YAF_STARTUP_FUNCTION(route_map) {
 	yaf_route_map_ce->ce_flags |= ZEND_ACC_FINAL_CLASS;
 
 	zend_declare_property_bool(yaf_route_map_ce, ZEND_STRL(YAF_ROUTE_MAP_VAR_NAME_CTL_PREFER), 0, ZEND_ACC_PROTECTED TSRMLS_CC);
-	zend_declare_property_null(yaf_route_map_ce, ZEND_STRL(YAF_ROUTE_MAP_VAR_NAME_DELIMETER),  ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(yaf_route_map_ce, ZEND_STRL(YAF_ROUTE_MAP_VAR_NAME_DELIMETER),	ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	return SUCCESS;
 }

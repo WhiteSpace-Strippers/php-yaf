@@ -5,14 +5,14 @@ Check for Yaf_Loader with namespace configuration
 --INI--
 yaf.library="/php/global/dir"
 --FILE--
-<?php 
+<?php
 $config = array(
 	"application" => array(
 		"directory" => realpath(dirname(__FILE__)),
-        "library" => array(
-            "directory" => "/tmp",
-            "namespace" => "Foo, Bar",
-        ),
+				"library" => array(
+						"directory" => "/tmp",
+						"namespace" => "Foo, Bar",
+				),
 	),
 );
 
@@ -25,7 +25,7 @@ var_dump(Yaf_Loader::getInstance()->isLocalName("Bar_Name"));
 --EXPECTF--
 Yaf_Loader Object
 (
-    [_library:protected] => /tmp
-    [_global_library:protected] => /php/global/dir
+		[_library:protected] => /tmp
+		[_global_library:protected] => /php/global/dir
 )
 bool(true)

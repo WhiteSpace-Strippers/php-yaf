@@ -31,7 +31,7 @@ CPP=cl.exe
 MTL=midl.exe
 RSC=rc.exe
 
-!IF  "$(CFG)" == "yaf - Win32 Release_TS"
+!IF	"$(CFG)" == "yaf - Win32 Release_TS"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 0
@@ -58,7 +58,7 @@ LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib php5ts.lib /nologo /dll /machine:I386
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib php5ts.lib /nologo /dll /machine:I386 /out:"..\..\Release_TS/php_yaf.dll" /libpath:"..\..\Release_TS" /libpath:"..\..\Release_TS_Inline"
 
-!ELSEIF  "$(CFG)" == "yaf - Win32 Debug_TS"
+!ELSEIF	"$(CFG)" == "yaf - Win32 Debug_TS"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 0
@@ -85,7 +85,7 @@ LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib php5ts.lib /nologo /dll /machine:I386
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib php5ts_debug.lib /nologo /dll /machine:I386 /out:"..\..\Debug_TS/php_yaf.dll" /libpath:"..\..\Debug_TS"
 
-!ELSEIF  "$(CFG)" == "yaf - Win32 Release_NTS"
+!ELSEIF	"$(CFG)" == "yaf - Win32 Release_NTS"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 0
@@ -112,7 +112,7 @@ LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib php5.lib /nologo /dll /machine:I386
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib php5.lib /nologo /dll /machine:I386 /out:"..\..\Release_NTS/php_yaf.dll" /libpath:"..\..\Release_NTS"
 
-!ELSEIF  "$(CFG)" == "yaf - Win32 Debug_NTS"
+!ELSEIF	"$(CFG)" == "yaf - Win32 Debug_NTS"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 0

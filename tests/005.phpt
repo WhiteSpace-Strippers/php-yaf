@@ -3,11 +3,11 @@ Check for Yaf_Response
 --SKIPIF--
 <?php if (!extension_loaded("yaf")) print "skip"; ?>
 --FILE--
-<?php 
+<?php
 $response = new Yaf_Response_Http();
 
 
-$body  = <<<HTML
+$body	= <<<HTML
 ifjakdsljfklasdjfkljasdkljfkljadsf
 HTML;
 
@@ -34,7 +34,7 @@ debug_zval_dump($response->getBody());
 string(7) "content"
 Array
 (
-    [content] => laruenceifjakdsljfklasdjfkljasdkljfkljadsfkfjdaksljfklajdsfkljasdkljfkjasdf
+		[content] => laruenceifjakdsljfklasdjfkljasdkljfkljadsfkfjdaksljfklajdsfkljasdkljfkjasdf
 )
 string(75) "laruenceifjakdsljfklasdjfkljasdkljfkljadsfkfjdaksljfklajdsfkljasdkljfkjasdf" refcount(1)
 string(75) "laruenceifjakdsljfklasdjfkljasdkljfkljadsfkfjdaksljfklajdsfkljasdkljfkjasdf" refcount(1)

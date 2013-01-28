@@ -4,7 +4,7 @@ Check for Yaf_Application
 <?php if (!extension_loaded("yaf")) print "skip"; ?>
 --INI--
 --FILE--
-<?php 
+<?php
 define("APPLICATION_PATH", dirname(__FILE__));
 $app = new Yaf_Application(
 	dirname(__FILE__) . "/simple.ini",

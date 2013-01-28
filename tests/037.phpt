@@ -1,12 +1,12 @@
 --TEST--
 Check for Yaf_Loader and open_basedir
 --SKIPIF--
-<?php 
+<?php
 if (!extension_loaded("yaf")) {
-   die("skip");
+	 die("skip");
 }
 if (version_compare(PHP_VERSION, "5.3", "lt")) {
-   die("skip open_basedir only can be tightened as of 5.3.0");
+	 die("skip open_basedir only can be tightened as of 5.3.0");
 }
 ?>
 --INI--
@@ -17,7 +17,7 @@ $dir = __DIR__;
 $odir = $dir . "/foo";
 file_put_contents($dir . "/Dummy.php", "");
 
-ini_set("open_basedir",  $odir);
+ini_set("open_basedir",	$odir);
 $loader = Yaf_Loader::getInstance($dir);
 $loader->import($dir . "/Dummy.php");
 $loader->autoload("Dummy");

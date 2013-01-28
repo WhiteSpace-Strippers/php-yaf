@@ -1,17 +1,17 @@
 /*
-   +----------------------------------------------------------------------+
-   | Yet Another Framework                                                |
-   +----------------------------------------------------------------------+
-   | This source file is subject to version 3.01 of the PHP license,      |
-   | that is bundled with this package in the file LICENSE, and is        |
-   | available through the world-wide-web at the following url:           |
-   | http://www.php.net/license/3_01.txt                                  |
-   | If you did not receive a copy of the PHP license and are unable to   |
-   | obtain it through the world-wide-web, please send a note to          |
-   | license@php.net so we can mail you a copy immediately.               |
-   +----------------------------------------------------------------------+
-   | Author: Xinchen Hui  <laruence@php.net>                              |
-   +----------------------------------------------------------------------+
+	 +----------------------------------------------------------------------+
+	 | Yet Another Framework																								|
+	 +----------------------------------------------------------------------+
+	 | This source file is subject to version 3.01 of the PHP license,			|
+	 | that is bundled with this package in the file LICENSE, and is				|
+	 | available through the world-wide-web at the following url:					 |
+	 | http://www.php.net/license/3_01.txt																	|
+	 | If you did not receive a copy of the PHP license and are unable to	 |
+	 | obtain it through the world-wide-web, please send a note to					|
+	 | license@php.net so we can mail you a copy immediately.							 |
+	 +----------------------------------------------------------------------+
+	 | Author: Xinchen Hui	<laruence@php.net>															|
+	 +----------------------------------------------------------------------+
 */
 
 /* $Id: ini.c 329197 2013-01-18 05:55:37Z laruence $ */
@@ -69,7 +69,7 @@ ZEND_BEGIN_ARG_INFO_EX(yaf_config_ini_isset_arginfo, 0, 0, 1)
 ZEND_END_ARG_INFO()
 /* }}} */
 
-/* {{{ static void yaf_config_ini_zval_deep_copy(zval **p) 
+/* {{{ static void yaf_config_ini_zval_deep_copy(zval **p)
  */
 static void yaf_config_ini_zval_deep_copy(zval **p) {
 	zval *value;
@@ -80,7 +80,7 @@ static void yaf_config_ini_zval_deep_copy(zval **p) {
 		case IS_ARRAY:
 			{
 				array_init(value);
-				zend_hash_copy(Z_ARRVAL_P(value), Z_ARRVAL_PP(p), 
+				zend_hash_copy(Z_ARRVAL_P(value), Z_ARRVAL_PP(p),
 						(copy_ctor_func_t)yaf_config_ini_zval_deep_copy, NULL, sizeof(zval *));
 			}
 			break;
@@ -123,19 +123,19 @@ static void yaf_config_ini_simple_parser_cb(zval *key, zval *value, zval *index,
 				skey = estrndup(Z_STRVAL_P(key), Z_STRLEN_P(key));
 				if ((seg = php_strtok_r(skey, ".", &ptr))) {
 					do {
-					    char *real_key = seg;
+							char *real_key = seg;
 						seg = php_strtok_r(NULL, ".", &ptr);
 						if (zend_symtable_find(Z_ARRVAL_P(dst), real_key, strlen(real_key) + 1, (void **) &ppzval) == FAILURE) {
 							if (seg) {
 								zval *tmp;
-							    MAKE_STD_ZVAL(tmp);   
+									MAKE_STD_ZVAL(tmp);
 								array_init(tmp);
-								zend_symtable_update(Z_ARRVAL_P(dst), 
+								zend_symtable_update(Z_ARRVAL_P(dst),
 										real_key, strlen(real_key) + 1, (void **)&tmp, sizeof(zval *), (void **)&ppzval);
 							} else {
-							    MAKE_STD_ZVAL(element);
+									MAKE_STD_ZVAL(element);
 								ZVAL_ZVAL(element, value, 1, 0);
-								zend_symtable_update(Z_ARRVAL_P(dst), 
+								zend_symtable_update(Z_ARRVAL_P(dst),
 										real_key, strlen(real_key) + 1, (void **)&element, sizeof(zval *), NULL);
 								break;
 							}
@@ -143,17 +143,17 @@ static void yaf_config_ini_simple_parser_cb(zval *key, zval *value, zval *index,
 							if (IS_ARRAY != Z_TYPE_PP(ppzval)) {
 								if (seg) {
 									zval *tmp;
-									MAKE_STD_ZVAL(tmp);   
+									MAKE_STD_ZVAL(tmp);
 									array_init(tmp);
-									zend_symtable_update(Z_ARRVAL_P(dst), 
+									zend_symtable_update(Z_ARRVAL_P(dst),
 											real_key, strlen(real_key) + 1, (void **)&tmp, sizeof(zval *), (void **)&ppzval);
 								} else {
 									MAKE_STD_ZVAL(element);
 									ZVAL_ZVAL(element, value, 1, 0);
-									zend_symtable_update(Z_ARRVAL_P(dst), 
+									zend_symtable_update(Z_ARRVAL_P(dst),
 											real_key, strlen(real_key) + 1, (void **)&element, sizeof(zval *), NULL);
 								}
-							} 
+							}
 						}
 						dst = *ppzval;
 					} while (seg);
@@ -190,7 +190,7 @@ static void yaf_config_ini_simple_parser_cb(zval *key, zval *value, zval *index,
 							if (zend_symtable_find(Z_ARRVAL_P(dst), seg, strlen(seg) + 1, (void **) &find_hash) == FAILURE) {
 								MAKE_STD_ZVAL(hash);
 								array_init(hash);
-								zend_symtable_update(Z_ARRVAL_P(dst), 
+								zend_symtable_update(Z_ARRVAL_P(dst),
 										seg, strlen(seg) + 1, (void **)&hash, sizeof(zval *), (void **)&find_hash);
 							}
 							dst = *find_hash;
@@ -263,20 +263,20 @@ static void yaf_config_ini_parser_cb(zval *key, zval *value, zval *index, int ca
 			}
 
 			if ((section = strrchr(seg, ':'))) {
-			    /* muilt-inherit */
+					/* muilt-inherit */
 				do {
 					while (*(section) == ' ' || *(section) == ':') {
 						*(section++) = '\0';
 					}
 					if (zend_symtable_find(Z_ARRVAL_P(arr), section, strlen(section) + 1, (void **)&parent) == SUCCESS) {
 						zend_hash_copy(Z_ARRVAL_P(YAF_G(active_ini_file_section)), Z_ARRVAL_PP(parent),
-							   	(copy_ctor_func_t)yaf_config_ini_zval_deep_copy, NULL, sizeof(zval *));
+								 	(copy_ctor_func_t)yaf_config_ini_zval_deep_copy, NULL, sizeof(zval *));
 					}
 				} while ((section = strrchr(seg, ':')));
 			}
 
 			/* remove the tail space, thinking of 'foo : bar : test' */
-            section = seg + strlen(seg) - 1;
+						section = seg + strlen(seg) - 1;
 			while (*section == ' ' || *section == ':') {
 				*(section--) = '\0';
 			}
@@ -286,8 +286,8 @@ static void yaf_config_ini_parser_cb(zval *key, zval *value, zval *index, int ca
 						(copy_ctor_func_t)yaf_config_ini_zval_deep_copy, NULL, sizeof(zval *));
 			}
 		}
-	    seg = skey + strlen(skey) - 1;
-        while (*seg == ' ' || *seg == ':') {
+			seg = skey + strlen(skey) - 1;
+				while (*seg == ' ' || *seg == ':') {
 			*(seg--) = '\0';
 		}
 		skey_len = strlen(skey);
@@ -308,7 +308,7 @@ static void yaf_config_ini_parser_cb(zval *key, zval *value, zval *index, int ca
 	}
 }
 /* }}} */
-#else 
+#else
 /** {{{ static void yaf_config_ini_simple_parser_cb(zval *key, zval *value, int callback_type, zval *arr)
 */
 static void yaf_config_ini_simple_parser_cb(zval *key, zval *value, int callback_type, zval *arr) {
@@ -327,19 +327,19 @@ static void yaf_config_ini_simple_parser_cb(zval *key, zval *value, int callback
 				skey = estrndup(Z_STRVAL_P(key), Z_STRLEN_P(key));
 				if ((seg = php_strtok_r(skey, ".", &ptr))) {
 					do {
-					    char *real_key = seg;
+							char *real_key = seg;
 						seg = php_strtok_r(NULL, ".", &ptr);
 						if (zend_symtable_find(Z_ARRVAL_P(dst), real_key, strlen(real_key) + 1, (void **) &ppzval) == FAILURE) {
 							if (seg) {
 								zval *tmp;
-							    MAKE_STD_ZVAL(tmp);   
+									MAKE_STD_ZVAL(tmp);
 								array_init(tmp);
-								zend_symtable_update(Z_ARRVAL_P(dst), 
+								zend_symtable_update(Z_ARRVAL_P(dst),
 										real_key, strlen(real_key) + 1, (void **)&tmp, sizeof(zval *), (void **)&ppzval);
 							} else {
-							    MAKE_STD_ZVAL(element);
+									MAKE_STD_ZVAL(element);
 								ZVAL_ZVAL(element, value, 1, 0);
-								zend_symtable_update(Z_ARRVAL_P(dst), 
+								zend_symtable_update(Z_ARRVAL_P(dst),
 										real_key, strlen(real_key) + 1, (void **)&element, sizeof(zval *), NULL);
 								break;
 							}
@@ -347,17 +347,17 @@ static void yaf_config_ini_simple_parser_cb(zval *key, zval *value, int callback
 							if (IS_ARRAY != Z_TYPE_PP(ppzval)) {
 								if (seg) {
 									zval *tmp;
-									MAKE_STD_ZVAL(tmp);   
+									MAKE_STD_ZVAL(tmp);
 									array_init(tmp);
-									zend_symtable_update(Z_ARRVAL_P(dst), 
+									zend_symtable_update(Z_ARRVAL_P(dst),
 											real_key, strlen(real_key) + 1, (void **)&tmp, sizeof(zval *), (void **)&ppzval);
 								} else {
 									MAKE_STD_ZVAL(element);
 									ZVAL_ZVAL(element, value, 1, 0);
-									zend_symtable_update(Z_ARRVAL_P(dst), 
+									zend_symtable_update(Z_ARRVAL_P(dst),
 											real_key, strlen(real_key) + 1, (void **)&element, sizeof(zval *), NULL);
 								}
-							} 
+							}
 						}
 						dst = *ppzval;
 					} while (seg);
@@ -394,7 +394,7 @@ static void yaf_config_ini_simple_parser_cb(zval *key, zval *value, int callback
 							if (zend_symtable_find(Z_ARRVAL_P(dst), seg, strlen(seg) + 1, (void **) &find_hash) == FAILURE) {
 								MAKE_STD_ZVAL(hash);
 								array_init(hash);
-								zend_symtable_update(Z_ARRVAL_P(dst), 
+								zend_symtable_update(Z_ARRVAL_P(dst),
 										seg, strlen(seg) + 1, (void **)&hash, sizeof(zval *), (void **)&find_hash);
 							}
 							dst = *find_hash;
@@ -463,20 +463,20 @@ static void yaf_config_ini_parser_cb(zval *key, zval *value, int callback_type, 
 			}
 
 			if ((section = strrchr(seg, ':'))) {
-			    /* muilt-inherit */
+					/* muilt-inherit */
 				do {
 					while (*(section) == ' ' || *(section) == ':') {
 						*(section++) = '\0';
 					}
 					if (zend_symtable_find(Z_ARRVAL_P(arr), section, strlen(section) + 1, (void **)&parent) == SUCCESS) {
 						zend_hash_copy(Z_ARRVAL_P(YAF_G(active_ini_file_section)), Z_ARRVAL_PP(parent),
-							   	(copy_ctor_func_t)yaf_config_ini_zval_deep_copy, NULL, sizeof(zval *));
+								 	(copy_ctor_func_t)yaf_config_ini_zval_deep_copy, NULL, sizeof(zval *));
 					}
 				} while ((section = strrchr(seg, ':')));
 			}
 
 			/* remove the tail space, thinking of 'foo : bar : test' */
-            section = seg + strlen(seg) - 1;
+						section = seg + strlen(seg) - 1;
 			while (*section == ' ' || *section == ':') {
 				*(section--) = '\0';
 			}
@@ -486,10 +486,10 @@ static void yaf_config_ini_parser_cb(zval *key, zval *value, int callback_type, 
 						(copy_ctor_func_t)yaf_config_ini_zval_deep_copy, NULL, sizeof(zval *));
 			}
 		}
-	    seg = skey + strlen(skey) - 1;
-        while (*seg == ' ' || *seg == ':') {
+			seg = skey + strlen(skey) - 1;
+				while (*seg == ' ' || *seg == ':') {
 			*(seg--) = '\0';
-		}	
+		}
 		skey_len = strlen(skey);
 		zend_symtable_update(Z_ARRVAL_P(arr), skey, skey_len + 1, &YAF_G(active_ini_file_section), sizeof(zval *), NULL);
 		if (YAF_G(ini_wanted_section) && Z_STRLEN_P(YAF_G(ini_wanted_section)) == skey_len
@@ -528,10 +528,10 @@ yaf_config_t * yaf_config_ini_instance(yaf_config_t *this_ptr, zval *filename, z
 
 		return instance;
 	} else if (filename && Z_TYPE_P(filename) == IS_STRING) {
-	    struct stat sb;
-	    zend_file_handle fh = {0};
+			struct stat sb;
+			zend_file_handle fh = {0};
 		char *ini_file = Z_STRVAL_P(filename);
-		
+
 		MAKE_STD_ZVAL(configs);
 		ZVAL_NULL(configs);
 
@@ -552,7 +552,7 @@ yaf_config_t * yaf_config_ini_instance(yaf_config_t *this_ptr, zval *filename, z
 	 				array_init(configs);
 #if ((PHP_MAJOR_VERSION == 5) && (PHP_MINOR_VERSION > 2))
 					if (zend_parse_ini_file(&fh, 0, 0 /* ZEND_INI_SCANNER_NORMAL */,
-						   	(zend_ini_parser_cb_t)yaf_config_ini_parser_cb, configs TSRMLS_CC) == FAILURE
+							 	(zend_ini_parser_cb_t)yaf_config_ini_parser_cb, configs TSRMLS_CC) == FAILURE
 							|| Z_TYPE_P(configs) != IS_ARRAY)
 #else
 					if (zend_parse_ini_file(&fh, 0, (zend_ini_parser_cb_t)yaf_config_ini_parser_cb, configs) == FAILURE
@@ -590,7 +590,7 @@ yaf_config_t * yaf_config_ini_instance(yaf_config_t *this_ptr, zval *filename, z
 			zval_dtor(configs);
 
 			*configs = tmp;
-		} 
+		}
 
 		if (this_ptr) {
 			instance = this_ptr;
@@ -749,7 +749,7 @@ PHP_METHOD(yaf_config_ini, current) {
 	}
 
 	if (Z_TYPE_PP(ppzval) == IS_ARRAY) {
-		if ((ret = yaf_config_ini_format(getThis(),  ppzval TSRMLS_CC))) {
+		if ((ret = yaf_config_ini_format(getThis(),	ppzval TSRMLS_CC))) {
 			RETURN_ZVAL(ret, 1, 1);
 		} else {
 			RETURN_NULL();

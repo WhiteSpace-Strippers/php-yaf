@@ -6,7 +6,7 @@ Check for Yaf_Loader
 yaf.use_spl_autoload=0
 yaf.lowcase_path=0
 --FILE--
-<?php 
+<?php
 ini_set("ap.lowcase_path", FALSE);
 $loader = Yaf_Loader::getInstance(dirname(__FILE__), dirname(__FILE__) . "/global");
 $loader->registerLocalNamespace("Baidu");
@@ -19,12 +19,12 @@ try {
 	var_dump($loader->autoload("Baidu_Name"));
 } catch (Yaf_Exception_LoadFailed $e) {
 	var_dump($e->getMessage());
-} 
+}
 try {
 	var_dump($loader->autoload("Global_Name"));
 } catch (Yaf_Exception_LoadFailed $e) {
 	var_dump($e->getMessage());
-} 
+}
 
 ?>
 --EXPECTF--

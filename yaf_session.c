@@ -1,17 +1,17 @@
 /*
-   +----------------------------------------------------------------------+
-   | Yet Another Framework                                                |
-   +----------------------------------------------------------------------+
-   | This source file is subject to version 3.01 of the PHP license,      |
-   | that is bundled with this package in the file LICENSE, and is        |
-   | available through the world-wide-web at the following url:           |
-   | http://www.php.net/license/3_01.txt                                  |
-   | If you did not receive a copy of the PHP license and are unable to   |
-   | obtain it through the world-wide-web, please send a note to          |
-   | license@php.net so we can mail you a copy immediately.               |
-   +----------------------------------------------------------------------+
-   | Author: Xinchen Hui  <laruence@php.net>                              |
-   +----------------------------------------------------------------------+
+	 +----------------------------------------------------------------------+
+	 | Yet Another Framework																								|
+	 +----------------------------------------------------------------------+
+	 | This source file is subject to version 3.01 of the PHP license,			|
+	 | that is bundled with this package in the file LICENSE, and is				|
+	 | available through the world-wide-web at the following url:					 |
+	 | http://www.php.net/license/3_01.txt																	|
+	 | If you did not receive a copy of the PHP license and are unable to	 |
+	 | obtain it through the world-wide-web, please send a note to					|
+	 | license@php.net so we can mail you a copy immediately.							 |
+	 +----------------------------------------------------------------------+
+	 | Author: Xinchen Hui	<laruence@php.net>															|
+	 +----------------------------------------------------------------------+
 */
 
 /* $Id: yaf_session.c 329197 2013-01-18 05:55:37Z laruence $ */
@@ -21,7 +21,7 @@
 #endif
 
 #include "php.h"
-#include "Zend/zend_interfaces.h"  /* for zend_ce_iterator */
+#include "Zend/zend_interfaces.h"	/* for zend_ce_iterator */
 
 #include "php_yaf.h"
 #include "yaf_namespace.h"
@@ -184,8 +184,8 @@ PHP_METHOD(yaf_session, start) {
 /** {{{ proto public static Yaf_Session::get($name)
 */
 PHP_METHOD(yaf_session, get) {
-	char *name  = NULL;
-	int  len	= 0;
+	char *name	= NULL;
+	int	len	= 0;
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "|s", &name, &len) == FAILURE) {
 		WRONG_PARAM_COUNT;
 	} else {
@@ -250,7 +250,7 @@ PHP_METHOD(yaf_session, del) {
 */
 PHP_METHOD(yaf_session, has) {
 	char *name;
-	uint  len;
+	uint	len;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &name, &len) == FAILURE) {
 		return;
@@ -363,8 +363,8 @@ YAF_STARTUP_FUNCTION(session) {
 #endif
 
 	zend_declare_property_null(yaf_session_ce, ZEND_STRL(YAF_SESSION_PROPERTY_NAME_INSTANCE), ZEND_ACC_PROTECTED|ZEND_ACC_STATIC TSRMLS_CC);
-	zend_declare_property_null(yaf_session_ce, ZEND_STRL(YAF_SESSION_PROPERTY_NAME_SESSION),  ZEND_ACC_PROTECTED TSRMLS_CC);
-	zend_declare_property_bool(yaf_session_ce, ZEND_STRL(YAF_SESSION_PROPERTY_NAME_STATUS),   0, ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(yaf_session_ce, ZEND_STRL(YAF_SESSION_PROPERTY_NAME_SESSION),	ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_bool(yaf_session_ce, ZEND_STRL(YAF_SESSION_PROPERTY_NAME_STATUS),	 0, ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	return SUCCESS;
 }

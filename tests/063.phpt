@@ -3,25 +3,25 @@ Check for Yaf_Route_Rewrite with dynamic mvc
 --SKIPIF--
 <?php if (!extension_loaded("yaf")) print "skip"; ?>
 --FILE--
-<?php 
+<?php
 $request = new Yaf_Request_Http("/subdir/ctl/act/name/value");
 
 $router = new Yaf_Router();
 
-$route  = new Yaf_Route_Rewrite(
+$route	= new Yaf_Route_Rewrite(
 	"/subdir/:con/:a/*",
 	array(
-        "module" => "m",
-        "controller" => ":1",
+				"module" => "m",
+				"controller" => ":1",
 		"action" => ":a",
 	)
 );
 
 $router->addRoute("subdir", $route)->addRoute("yaf", new Yaf_Route_Rewrite(
 	"/yaf/:action/*",
-    array(
+		array(
 		"action" => ':action',
-        "controller" => "index",
+				"controller" => "index",
 	)
 ))->route($request);
 
@@ -45,9 +45,9 @@ var_dump($request->getModuleName());
 string(6) "subdir"
 Array
 (
-    [con] => ctl
-    [a] => act
-    [name] => value
+		[con] => ctl
+		[a] => act
+		[name] => value
 )
 string(3) "act"
 NULL
@@ -55,8 +55,8 @@ string(1) "m"
 string(3) "yaf"
 Array
 (
-    [action] => act
-    [name] => value
+		[action] => act
+		[name] => value
 )
 string(3) "act"
 string(5) "index"

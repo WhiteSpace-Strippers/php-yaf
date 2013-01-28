@@ -5,7 +5,7 @@ Check for Yaf_Response::setBody/prependBody/appendBody
 --INI--
 yaf.library="/php/global/dir"
 --FILE--
-<?php 
+<?php
 $response = new Yaf_Response_Http();
 $response->setBody("ell")->appendBody("o")->setBody(" W", "footer")->prependBody("H")->appendBody("orld", "footer");
 print_r($response);
@@ -14,17 +14,17 @@ echo $response;
 --EXPECTF--
 Yaf_Response_Http Object
 (
-    [_header:protected] => Array
-        (
-        )
+		[_header:protected] => Array
+				(
+				)
 
-    [_body:protected] => Array
-        (
-            [content] => Hello
-            [footer] =>  World
-        )
+		[_body:protected] => Array
+				(
+						[content] => Hello
+						[footer] =>	World
+				)
 
-    [_sendheader:protected] => 1
-    [_response_code:protected] => 200
+		[_sendheader:protected] => 1
+		[_response_code:protected] => 200
 )
 Hello World

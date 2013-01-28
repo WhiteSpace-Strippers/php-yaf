@@ -3,7 +3,7 @@ Check for Yaf_Session
 --SKIPIF--
 <?php if (!extension_loaded("yaf")) print "skip"; ?>
 --FILE--
-<?php 
+<?php
 $session = Yaf_Session::getInstance();
 
 $_SESSION["name"] = "Laruence";

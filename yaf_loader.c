@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: yaf_loader.c 329197 2013-01-18 05:55:37Z laruence $ */
@@ -38,33 +38,33 @@ ZEND_BEGIN_ARG_INFO_EX(yaf_loader_void_arginfo, 0, 0, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(yaf_loader_getinstance_arginfo, 0, 0, 0)
-    ZEND_ARG_INFO(0, local_library_path)
-    ZEND_ARG_INFO(0, global_library_path)
+		ZEND_ARG_INFO(0, local_library_path)
+		ZEND_ARG_INFO(0, global_library_path)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(yaf_loader_autoloader_arginfo, 0, 0, 1)
-    ZEND_ARG_INFO(0, class_name)
+		ZEND_ARG_INFO(0, class_name)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(yaf_loader_regnamespace_arginfo, 0, 0, 1)
-    ZEND_ARG_INFO(0, name_prefix)
+		ZEND_ARG_INFO(0, name_prefix)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(yaf_loader_islocalname_arginfo, 0, 0, 1)
-    ZEND_ARG_INFO(0, class_name)
+		ZEND_ARG_INFO(0, class_name)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(yaf_loader_import_arginfo, 0, 0, 1)
-    ZEND_ARG_INFO(0, file)
+		ZEND_ARG_INFO(0, file)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(yaf_loader_setlib_arginfo, 0, 0, 1)
-    ZEND_ARG_INFO(0, library_path)
-    ZEND_ARG_INFO(0, is_global)
+		ZEND_ARG_INFO(0, library_path)
+		ZEND_ARG_INFO(0, is_global)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(yaf_loader_getlib_arginfo, 0, 0, 0)
-    ZEND_ARG_INFO(0, is_global)
+		ZEND_ARG_INFO(0, is_global)
 ZEND_END_ARG_INFO()
 /* }}} */
 
@@ -131,10 +131,10 @@ int yaf_loader_register(yaf_loader_t *loader TSRMLS_DC) {
 			internal_function->module 	= NULL;
 			internal_function->handler 	= ZEND_FN(yaf_override_spl_autoload);
 			internal_function->function_name = YAF_AUTOLOAD_FUNC_NAME;
-			internal_function->scope 	=  NULL;
+			internal_function->scope 	=	NULL;
 			internal_function->prototype = NULL;
-			internal_function->arg_info  = NULL;
-			internal_function->num_args  = 1;
+			internal_function->arg_info	= NULL;
+			internal_function->num_args	= 1;
 			internal_function->required_num_args = 0;
 			internal_function->pass_rest_by_reference = 0;
 			internal_function->return_reference = 0;
@@ -196,7 +196,7 @@ int yaf_loader_is_local_namespace(yaf_loader_t *loader, char *class_name, int le
 	ns	= YAF_G(local_namespaces);
 
 	pos = strstr(class_name, "_");
-    if (pos) {
+		if (pos) {
 		prefix_len 	= pos - class_name;
 		prefix 		= class_name;
 		backup = class_name + prefix_len;
@@ -228,7 +228,7 @@ int yaf_loader_is_local_namespace(yaf_loader_t *loader, char *class_name, int le
 			}
 #endif
 			return 1;
-		} else if (*(pos - 1) == DEFAULT_DIR_SEPARATOR 
+		} else if (*(pos - 1) == DEFAULT_DIR_SEPARATOR
 				&& (*(pos + prefix_len) == DEFAULT_DIR_SEPARATOR || *(pos + prefix_len) == '\0')) {
 			if (backup) {
 				*backup = orig_char;
@@ -266,7 +266,7 @@ yaf_loader_t * yaf_loader_instance(yaf_loader_t *this_ptr, char *library_path, c
 
 	if (IS_OBJECT == Z_TYPE_P(instance)) {
 	/* unecessary since there is no set_router things
-	   && instanceof_function(Z_OBJCE_P(instance), yaf_loader_ce TSRMLS_CC)) {
+		 && instanceof_function(Z_OBJCE_P(instance), yaf_loader_ce TSRMLS_CC)) {
 	 */
 		if (library_path) {
 			MAKE_STD_ZVAL(library);
@@ -381,7 +381,7 @@ int yaf_loader_import(char *path, int len, int use_path TSRMLS_DC) {
 			}
 		}
 		YAF_RESTORE_EG_ENVIRON();
-	    return 1;
+			return 1;
 	}
 
 	return 0;
@@ -399,7 +399,7 @@ int yaf_internal_autoload(char *file_name, uint name_len, char **directory TSRML
 
 	if (NULL == *directory) {
 		char *library_path;
-		uint  library_path_len;
+		uint	library_path_len;
 		yaf_loader_t *loader;
 
 		loader = yaf_loader_instance(NULL, NULL, NULL TSRMLS_CC);
@@ -474,7 +474,7 @@ int yaf_internal_autoload(char *file_name, uint name_len, char **directory TSRML
 	smart_str_free(&buf);
 
 	if (!status)
-	   	return 0;
+		 	return 0;
 
 	return 1;
 }
@@ -658,7 +658,7 @@ PHP_METHOD(yaf_loader, import) {
 	if (!len) {
 		RETURN_FALSE;
 	} else {
-		int  retval = 0;
+		int	retval = 0;
 
 		if (!IS_ABSOLUTE_PATH(file, len)) {
 			yaf_loader_t *loader = yaf_loader_instance(NULL, NULL, NULL TSRMLS_CC);
@@ -715,7 +715,7 @@ PHP_METHOD(yaf_loader, autoload) {
 		{
 			int pos = 0;
 			origin_lcname = estrndup(class_name, class_name_len);
-			class_name 	  = origin_lcname;
+			class_name 		= origin_lcname;
 			while (pos < class_name_len) {
 				if (*(class_name + pos) == '\\') {
 					*(class_name + pos) = '_';
@@ -781,7 +781,7 @@ PHP_METHOD(yaf_loader, autoload) {
 /* }}} */
 
 		file_name_len = class_name_len;
-		file_name     = class_name;
+		file_name		 = class_name;
 
 	} while(0);
 
@@ -825,7 +825,7 @@ PHP_METHOD(yaf_loader, autoload) {
 				efree(lc_classname);
 				php_error_docref(NULL TSRMLS_CC, E_STRICT, "Could not find class %s in %s", class_name, directory);
 			}
-		}  else {
+		}	else {
 			php_error_docref(NULL TSRMLS_CC, E_WARNING, "Failed opening script %s: %s", directory, strerror(errno));
 		}
 
@@ -883,12 +883,12 @@ PHP_METHOD(yaf_loader, getInstance) {
 	char *library	 	= NULL;
 	char *global	 	= NULL;
 	int	 library_len 	= 0;
-	int  global_len	 	= 0;
+	int	global_len	 	= 0;
 	yaf_loader_t *loader;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "|ss", &library, &library_len, &global, &global_len) == FAILURE) {
 		return;
-	} 
+	}
 
 	loader = yaf_loader_instance(NULL, library, global TSRMLS_CC);
 	if (loader)
@@ -919,7 +919,7 @@ zend_function_entry yaf_loader_methods[] = {
 	PHP_ME(yaf_loader, __clone,					NULL, ZEND_ACC_PRIVATE|ZEND_ACC_CLONE)
 	PHP_ME(yaf_loader, __sleep,					NULL, ZEND_ACC_PRIVATE)
 	PHP_ME(yaf_loader, __wakeup,				NULL, ZEND_ACC_PRIVATE)
-	PHP_ME(yaf_loader, autoload,				yaf_loader_autoloader_arginfo,  ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_loader, autoload,				yaf_loader_autoloader_arginfo,	ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_loader, getInstance,				yaf_loader_getinstance_arginfo, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	PHP_ME(yaf_loader, registerLocalNamespace,	yaf_loader_regnamespace_arginfo, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_loader, getLocalNamespace,		yaf_loader_void_arginfo, ZEND_ACC_PUBLIC)
@@ -937,7 +937,7 @@ zend_function_entry yaf_loader_methods[] = {
 YAF_STARTUP_FUNCTION(loader) {
 	zend_class_entry ce;
 
-	YAF_INIT_CLASS_ENTRY(ce, "Yaf_Loader",  "Yaf\\Loader", yaf_loader_methods);
+	YAF_INIT_CLASS_ENTRY(ce, "Yaf_Loader",	"Yaf\\Loader", yaf_loader_methods);
 	yaf_loader_ce = zend_register_internal_class_ex(&ce, NULL, NULL TSRMLS_CC);
 	yaf_loader_ce->ce_flags |= ZEND_ACC_FINAL_CLASS;
 

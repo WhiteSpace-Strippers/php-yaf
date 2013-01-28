@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: interface.c 329197 2013-01-18 05:55:37Z laruence $ */
@@ -38,7 +38,7 @@
 
 zend_class_entry *yaf_route_ce;
 
-/* {{{ yaf_route_t * yaf_route_instance(yaf_route_t *this_ptr,  zval *config TSRMLS_DC)
+/* {{{ yaf_route_t * yaf_route_instance(yaf_route_t *this_ptr,	zval *config TSRMLS_DC)
  */
 yaf_route_t * yaf_route_instance(yaf_route_t *this_ptr, zval *config TSRMLS_DC) {
 	zval **match, **def, **map, **ppzval;
@@ -82,9 +82,9 @@ yaf_route_t * yaf_route_instance(yaf_route_t *this_ptr, zval *config TSRMLS_DC) 
 	} else if (Z_STRLEN_PP(ppzval) == (sizeof("map") - 1)
 			&& strncasecmp(Z_STRVAL_PP(ppzval), "map", sizeof("map") - 1) == 0) {
 		char *delimiter = NULL;
-		uint delim_len  = 0;
+		uint delim_len	= 0;
 		zend_bool controller_prefer = 0;
-		
+
 		if (zend_hash_find(Z_ARRVAL_P(config), ZEND_STRS("controllerPrefer"), (void **)&ppzval) == SUCCESS) {
 			zval *tmp = *ppzval;
 			Z_ADDREF_P(tmp);
@@ -134,7 +134,7 @@ yaf_route_t * yaf_route_instance(yaf_route_t *this_ptr, zval *config TSRMLS_DC) 
  */
 zend_function_entry yaf_route_methods[] = {
 	PHP_ABSTRACT_ME(yaf_route, route, yaf_route_route_arginfo)
-    {NULL, NULL, NULL}
+		{NULL, NULL, NULL}
 };
 /* }}} */
 

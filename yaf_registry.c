@@ -1,20 +1,20 @@
 /*
-   +----------------------------------------------------------------------+
-   | Yet Another Framework                                                |
-   +----------------------------------------------------------------------+
-   | This source file is subject to version 3.01 of the PHP license,      |
-   | that is bundled with this package in the file LICENSE, and is        |
-   | available through the world-wide-web at the following url:           |
-   | http://www.php.net/license/3_01.txt                                  |
-   | If you did not receive a copy of the PHP license and are unable to   |
-   | obtain it through the world-wide-web, please send a note to          |
-   | license@php.net so we can mail you a copy immediately.               |
-   +----------------------------------------------------------------------+
-   | Author: Xinchen Hui  <laruence@php.net>                              |
-   +----------------------------------------------------------------------+
+	 +----------------------------------------------------------------------+
+	 | Yet Another Framework																								|
+	 +----------------------------------------------------------------------+
+	 | This source file is subject to version 3.01 of the PHP license,			|
+	 | that is bundled with this package in the file LICENSE, and is				|
+	 | available through the world-wide-web at the following url:					 |
+	 | http://www.php.net/license/3_01.txt																	|
+	 | If you did not receive a copy of the PHP license and are unable to	 |
+	 | obtain it through the world-wide-web, please send a note to					|
+	 | license@php.net so we can mail you a copy immediately.							 |
+	 +----------------------------------------------------------------------+
+	 | Author: Xinchen Hui	<laruence@php.net>															|
+	 +----------------------------------------------------------------------+
 */
 
-/* $Id: yaf_registry.c 329197 2013-01-18 05:55:37Z laruence $  */
+/* $Id: yaf_registry.c 329197 2013-01-18 05:55:37Z laruence $	*/
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
@@ -99,7 +99,7 @@ PHP_METHOD(yaf_registry, __clone) {
 */
 PHP_METHOD(yaf_registry, get) {
 	char *name;
-	uint  len;
+	uint	len;
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &name, &len) == FAILURE) {
 		return;
 	} else {
@@ -212,7 +212,7 @@ YAF_STARTUP_FUNCTION(registry) {
 	yaf_registry_ce->ce_flags |= ZEND_ACC_FINAL_CLASS;
 
 	zend_declare_property_null(yaf_registry_ce, ZEND_STRL(YAF_REGISTRY_PROPERTY_NAME_INSTANCE), ZEND_ACC_PROTECTED|ZEND_ACC_STATIC TSRMLS_CC);
-	zend_declare_property_null(yaf_registry_ce, ZEND_STRL(YAF_REGISTRY_PROPERTY_NAME_ENTRYS),  ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(yaf_registry_ce, ZEND_STRL(YAF_REGISTRY_PROPERTY_NAME_ENTRYS),	ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	return SUCCESS;
 }

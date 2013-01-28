@@ -6,18 +6,18 @@ Check for Yaf_Route_Static with arbitrary urls
 --FILE--
 <?php
 $url = array(
-  "/", "/foo", "/foo/", "/foo///bar", "foo/bar", "/foo/bar/",
-  "/foo/bar/dummy", "/foo///bar/dummy/", "foo/bar/dummy/",
-  "/my", "/my/", "/my/foo", "/my/foo/", "my/foo/bar", "my/foo/bar/",
-  "/m/index/index", "/my/foo/bar/dummy/1", "my/foo/bar/dummy/1/a/2/////",
-  "/my/index/index", "my/index", "/foo/index", "index/foo",
+	"/", "/foo", "/foo/", "/foo///bar", "foo/bar", "/foo/bar/",
+	"/foo/bar/dummy", "/foo///bar/dummy/", "foo/bar/dummy/",
+	"/my", "/my/", "/my/foo", "/my/foo/", "my/foo/bar", "my/foo/bar/",
+	"/m/index/index", "/my/foo/bar/dummy/1", "my/foo/bar/dummy/1/a/2/////",
+	"/my/index/index", "my/index", "/foo/index", "index/foo",
 );
 
-$config = array( 
-    "application" => array(
-        "directory" => '/tmp/',
-        "modules"   => 'Index,My',
-     ),
+$config = array(
+		"application" => array(
+				"directory" => '/tmp/',
+				"modules"	 => 'Index,My',
+		 ),
 );
 
 $app = new Yaf_Application($config);
@@ -25,35 +25,35 @@ $app = new Yaf_Application($config);
 $route = Yaf_Dispatcher::getInstance()->getRouter();
 
 foreach ($url as $u) {
-   $req = new Yaf_Request_Http($u);
-   $route->route($req);
-   echo $u, " : ",  "m=>", $req->getModuleName(), " c=>", $req->getControllerName(), " a=>",  $req->getActionName();
-   if (($args = $req->getParams())) {
-       echo " args=>";
-       foreach ($args as $k => $v) {
-          echo $k , "->", $v , ",";
-       }
-   }
-   echo "\n";
+	 $req = new Yaf_Request_Http($u);
+	 $route->route($req);
+	 echo $u, " : ",	"m=>", $req->getModuleName(), " c=>", $req->getControllerName(), " a=>",	$req->getActionName();
+	 if (($args = $req->getParams())) {
+			 echo " args=>";
+			 foreach ($args as $k => $v) {
+					echo $k , "->", $v , ",";
+			 }
+	 }
+	 echo "\n";
 }
 
 ini_set("yaf.action_prefer", 1);
 $url = array(
-  "/", "/foo", "/foo/",
-  "/my", "/my/", "/my/foo", "/my//foo/", 
+	"/", "/foo", "/foo/",
+	"/my", "/my/", "/my/foo", "/my//foo/",
 );
 
 foreach ($url as $u) {
-   $req = new Yaf_Request_Http($u);
-   $route->route($req);
-   echo $u, " : ",  "m=>", $req->getModuleName(), " c=>", $req->getControllerName(), " a=>",  $req->getActionName();
-   if (($args = $req->getParams())) {
-       echo " args=>";
-       foreach ($args as $k => $v) {
-          echo $k , "->", $v , ",";
-       }
-   }
-   echo "\n";
+	 $req = new Yaf_Request_Http($u);
+	 $route->route($req);
+	 echo $u, " : ",	"m=>", $req->getModuleName(), " c=>", $req->getControllerName(), " a=>",	$req->getActionName();
+	 if (($args = $req->getParams())) {
+			 echo " args=>";
+			 foreach ($args as $k => $v) {
+					echo $k , "->", $v , ",";
+			 }
+	 }
+	 echo "\n";
 }
 
 ?>

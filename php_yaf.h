@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: php_yaf.h 329002 2013-01-07 12:55:53Z laruence $ */
@@ -43,17 +43,17 @@ extern zend_module_entry yaf_module_entry;
 
 #define YAF_VERSION 					"2.2.10-dev"
 
-#define YAF_STARTUP_FUNCTION(module)   	ZEND_MINIT_FUNCTION(yaf_##module)
+#define YAF_STARTUP_FUNCTION(module)	 	ZEND_MINIT_FUNCTION(yaf_##module)
 #define YAF_RINIT_FUNCTION(module)		ZEND_RINIT_FUNCTION(yaf_##module)
-#define YAF_STARTUP(module)	 		  	ZEND_MODULE_STARTUP_N(yaf_##module)(INIT_FUNC_ARGS_PASSTHRU)
-#define YAF_SHUTDOWN_FUNCTION(module)  	ZEND_MINIT_FUNCTION(yaf_##module)
-#define YAF_SHUTDOWN(module)	 	    ZEND_MODULE_SHUTDOWN_N(yaf_##module)(INIT_FUNC_ARGS_PASSTHRU)
+#define YAF_STARTUP(module)	 				ZEND_MODULE_STARTUP_N(yaf_##module)(INIT_FUNC_ARGS_PASSTHRU)
+#define YAF_SHUTDOWN_FUNCTION(module)		ZEND_MINIT_FUNCTION(yaf_##module)
+#define YAF_SHUTDOWN(module)	 			ZEND_MODULE_SHUTDOWN_N(yaf_##module)(INIT_FUNC_ARGS_PASSTHRU)
 
 #if ((PHP_MAJOR_VERSION == 5) && (PHP_MINOR_VERSION > 2)) || (PHP_MAJOR_VERSION > 5)
 #define YAF_HAVE_NAMESPACE
 #else
-#define Z_SET_REFCOUNT_P(pz, rc)      (pz)->refcount = rc
-#define Z_SET_REFCOUNT_PP(ppz, rc)    Z_SET_REFCOUNT_P(*(ppz), rc)
+#define Z_SET_REFCOUNT_P(pz, rc)			(pz)->refcount = rc
+#define Z_SET_REFCOUNT_PP(ppz, rc)		Z_SET_REFCOUNT_P(*(ppz), rc)
 #define Z_ADDREF_P 	 ZVAL_ADDREF
 #define Z_REFCOUNT_P ZVAL_REFCOUNT
 #define Z_DELREF_P 	 ZVAL_DELREF
@@ -86,9 +86,9 @@ ZEND_BEGIN_MODULE_GLOBALS(yaf)
 	char 		*environ;
 	char 		*directory;
 	char 		*local_library;
-	char        *local_namespaces;
+	char				*local_namespaces;
 	char 		*global_library;
-	char        *view_directory;
+	char				*view_directory;
 	char 		*view_ext;
 	char 		*default_module;
 	char 		*default_controller;
@@ -100,28 +100,28 @@ ZEND_BEGIN_MODULE_GLOBALS(yaf)
 	zend_bool 	use_spl_autoload;
 	zend_bool 	throw_exception;
 	zend_bool 	cache_config;
-	zend_bool   action_prefer;
+	zend_bool	 action_prefer;
 	zend_bool	name_suffix;
-	zend_bool  	autoload_started;
-	zend_bool  	running;
-	zend_bool  	in_exception;
-	zend_bool  	catch_exception;
-	zend_bool   suppressing_warning;
+	zend_bool		autoload_started;
+	zend_bool		running;
+	zend_bool		in_exception;
+	zend_bool		catch_exception;
+	zend_bool	 suppressing_warning;
 /* {{{ This only effects internally */
-	zend_bool  	st_compatible;
+	zend_bool		st_compatible;
 /* }}} */
 	long		forward_limit;
 	HashTable	*configs;
 	zval 		*modules;
-	zval        *default_route;
+	zval				*default_route;
 #if ((PHP_MAJOR_VERSION == 5) && (PHP_MINOR_VERSION < 4))
 	uint 		buf_nesting;
 	void		*buffer;
 	void 		*owrite_handler;
 #endif
-	zval        *active_ini_file_section;
-	zval        *ini_wanted_section;
-	uint        parsing_flag;
+	zval				*active_ini_file_section;
+	zval				*ini_wanted_section;
+	uint				parsing_flag;
 #ifdef YAF_HAVE_NAMESPACE
 	zend_bool	use_namespace;
 #endif

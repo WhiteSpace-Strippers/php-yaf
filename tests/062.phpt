@@ -8,15 +8,15 @@ yaf.library="/php/global/dir"
 <?php
 $view = new Yaf_View_Simple(dirname(__FILE__));
 try {
-    $view = new Yaf_View_Simple("");
+		$view = new Yaf_View_Simple("");
 } catch (Yaf_Exception_TypeError $e) {
-    var_dump($e->getMessage());
+		var_dump($e->getMessage());
 }
 
 $config = array(
-   "application" => array(
-      "directory" => dirname(__FILE__),
-   ),
+	 "application" => array(
+			"directory" => dirname(__FILE__),
+	 ),
 );
 $app = new Yaf_Application($config);
 

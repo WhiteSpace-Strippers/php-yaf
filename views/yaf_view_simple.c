@@ -1,17 +1,17 @@
 /*
-   +----------------------------------------------------------------------+
-   | Yet Another Framework                                                |
-   +----------------------------------------------------------------------+
-   | This source file is subject to version 3.01 of the PHP license,      |
-   | that is bundled with this package in the file LICENSE, and is        |
-   | available through the world-wide-web at the following url:           |
-   | http://www.php.net/license/3_01.txt                                  |
-   | If you did not receive a copy of the PHP license and are unable to   |
-   | obtain it through the world-wide-web, please send a note to          |
-   | license@php.net so we can mail you a copy immediately.               |
-   +----------------------------------------------------------------------+
-   | Author: Xinchen Hui  <laruence@php.net>                              |
-   +----------------------------------------------------------------------+
+	 +----------------------------------------------------------------------+
+	 | Yet Another Framework																								|
+	 +----------------------------------------------------------------------+
+	 | This source file is subject to version 3.01 of the PHP license,			|
+	 | that is bundled with this package in the file LICENSE, and is				|
+	 | available through the world-wide-web at the following url:					 |
+	 | http://www.php.net/license/3_01.txt																	|
+	 | If you did not receive a copy of the PHP license and are unable to	 |
+	 | obtain it through the world-wide-web, please send a note to					|
+	 | license@php.net so we can mail you a copy immediately.							 |
+	 +----------------------------------------------------------------------+
+	 | Author: Xinchen Hui	<laruence@php.net>															|
+	 +----------------------------------------------------------------------+
 */
 
 /* $Id: simple.c 329197 2013-01-18 05:55:37Z laruence $ */
@@ -71,15 +71,15 @@ static int yaf_view_simple_render_write(const char *str, uint str_length TSRMLS_
 	yaf_view_simple_buffer *buffer = YAF_G(buffer);
 
 	if (!buffer->size) {
-		buffer->size   = (str_length | VIEW_BUFFER_SIZE_MASK) + 1;
-		buffer->len	   = str_length;
+		buffer->size	 = (str_length | VIEW_BUFFER_SIZE_MASK) + 1;
+		buffer->len		 = str_length;
 		buffer->buffer = emalloc(buffer->size);
 		target = buffer->buffer;
 	} else {
 		size_t len = buffer->len + str_length;
 
 		if (buffer->size < len + 1) {
-			buffer->size   = (len | VIEW_BUFFER_SIZE_MASK) + 1;
+			buffer->size	 = (len | VIEW_BUFFER_SIZE_MASK) + 1;
 			buffer->buffer = erealloc(buffer->buffer, buffer->size);
 			if (!buffer->buffer) {
 				php_error_docref(NULL TSRMLS_CC, E_ERROR, "Yaf output buffer collapsed");
@@ -108,10 +108,10 @@ static int yaf_view_simple_valid_var_name(char *var_name, int len) /* {{{ */
 	/* These are allowed as first char: [a-zA-Z_\x7f-\xff] */
 	ch = (int)((unsigned char *)var_name)[0];
 	if (var_name[0] != '_' &&
-			(ch < 65  /* A    */ || /* Z    */ ch > 90)  &&
-			(ch < 97  /* a    */ || /* z    */ ch > 122) &&
+			(ch < 65	/* A		*/ || /* Z		*/ ch > 90)	&&
+			(ch < 97	/* a		*/ || /* z		*/ ch > 122) &&
 			(ch < 127 /* 0x7f */ || /* 0xff */ ch > 255)
-	   ) {
+		 ) {
 		return 0;
 	}
 
@@ -120,11 +120,11 @@ static int yaf_view_simple_valid_var_name(char *var_name, int len) /* {{{ */
 		for (i = 1; i < len; i++) {
 			ch = (int)((unsigned char *)var_name)[i];
 			if (var_name[i] != '_' &&
-					(ch < 48  /* 0    */ || /* 9    */ ch > 57)  &&
-					(ch < 65  /* A    */ || /* Z    */ ch > 90)  &&
-					(ch < 97  /* a    */ || /* z    */ ch > 122) &&
+					(ch < 48	/* 0		*/ || /* 9		*/ ch > 57)	&&
+					(ch < 65	/* A		*/ || /* Z		*/ ch > 90)	&&
+					(ch < 97	/* a		*/ || /* z		*/ ch > 122) &&
 					(ch < 127 /* 0x7f */ || /* 0xff */ ch > 255)
-			   ) {
+				 ) {
 				return 0;
 			}
 		}
@@ -162,7 +162,7 @@ static int yaf_view_simple_extract(zval *tpl_vars, zval *vars TSRMLS_DC) {
 				continue;
 			}
 
-			if (var_name_len == sizeof("this")  && !strcmp(var_name, "this") && EG(scope) && EG(scope)->name_length != 0) {
+			if (var_name_len == sizeof("this")	&& !strcmp(var_name, "this") && EG(scope) && EG(scope)->name_length != 0) {
 				continue;
 			}
 
@@ -187,7 +187,7 @@ static int yaf_view_simple_extract(zval *tpl_vars, zval *vars TSRMLS_DC) {
 				continue;
 			}
 
-			if (var_name_len == sizeof("this")  && !strcmp(var_name, "this") && EG(scope) && EG(scope)->name_length != 0) {
+			if (var_name_len == sizeof("this")	&& !strcmp(var_name, "this") && EG(scope) && EG(scope)->name_length != 0) {
 				continue;
 			}
 
@@ -228,7 +228,7 @@ yaf_view_t * yaf_view_simple_instance(yaf_view_t *view, zval *tpl_dir, zval *opt
 			yaf_trigger_error(YAF_ERR_TYPE_ERROR TSRMLS_CC, "Expects an absolute path for templates directory");
 			return NULL;
 		}
-	} 
+	}
 
 	if (options && IS_ARRAY == Z_TYPE_P(options)) {
 		zend_update_property(yaf_view_simple_ce, instance, ZEND_STRL(YAF_VIEW_PROPERTY_NAME_OPTS), options TSRMLS_CC);
@@ -554,10 +554,10 @@ int yaf_view_simple_eval(yaf_view_t *view, zval *tpl, zval * vars, zval *ret TSR
 		zval phtml;
 		zend_op_array *new_op_array;
 		char *eval_desc = zend_make_compiled_string_description("template code" TSRMLS_CC);
-		
+
 		/* eval require code mustn't be wrapped in opening and closing PHP tags */
 		INIT_ZVAL(phtml);
-		Z_TYPE(phtml)   = IS_STRING;
+		Z_TYPE(phtml)	 = IS_STRING;
 		Z_STRLEN(phtml) = Z_STRLEN_P(tpl) + 2;
 		Z_STRVAL(phtml) = emalloc(Z_STRLEN(phtml) + 1);
 		snprintf(Z_STRVAL(phtml), Z_STRLEN(phtml) + 1, "?>%s", Z_STRVAL_P(tpl));
@@ -659,7 +659,7 @@ void yaf_view_simple_clear_assign(yaf_view_t *view, char *name, uint len TSRMLS_
 		} else {
 			zend_hash_clean(Z_ARRVAL_P(tpl_vars));
 		}
-	} 
+	}
 }
 /* }}} */
 
@@ -715,7 +715,7 @@ PHP_METHOD(yaf_view_simple, getScriptPath) {
 	zval *tpl_dir = zend_read_property(yaf_view_simple_ce, getThis(), ZEND_STRL(YAF_VIEW_PROPERTY_NAME_TPLDIR), 0 TSRMLS_CC);
 	if (IS_STRING != Z_TYPE_P(tpl_dir) && YAF_G(view_directory)) {
 		RETURN_STRING(YAF_G(view_directory), 1);
-	} 
+	}
 	RETURN_ZVAL(tpl_dir, 1, 0);
 }
 /* }}} */
@@ -754,7 +754,7 @@ PHP_METHOD(yaf_view_simple, assign) {
 		if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sz", &name, &len, &value) == FAILURE) {
 			return;
 		}
-        RETURN_BOOL(yaf_view_simple_assign_single(getThis(), name, len, value TSRMLS_CC));
+				RETURN_BOOL(yaf_view_simple_assign_single(getThis(), name, len, value TSRMLS_CC));
 	} else {
 		WRONG_PARAM_COUNT;
 	}
@@ -799,7 +799,7 @@ PHP_METHOD(yaf_view_simple, get) {
 		if (len) {
 			if (zend_hash_find(Z_ARRVAL_P(tpl_vars), name, len + 1, (void **) &ret) == SUCCESS) {
 				RETURN_ZVAL(*ret, 1, 0);
-			} 
+			}
 		} else {
 			RETURN_ZVAL(tpl_vars, 1, 0);
 		}
@@ -895,7 +895,7 @@ PHP_METHOD(yaf_view_simple, clear) {
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "|s", &name, &len) == FAILURE) {
 		return;
 	}
-    
+
 	yaf_view_simple_clear_assign(getThis(), name, len TSRMLS_CC);
 
 	RETURN_ZVAL(getThis(), 1, 0);
@@ -910,7 +910,7 @@ zend_function_entry yaf_view_simple_methods[] = {
 	PHP_ME(yaf_view_simple, get, yaf_view_simple_get_arginfo, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_view_simple, assign, yaf_view_assign_arginfo, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_view_simple, render, yaf_view_render_arginfo, ZEND_ACC_PUBLIC)
-	PHP_ME(yaf_view_simple, eval,  yaf_view_simple_eval_arginfo, ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_view_simple, eval,	yaf_view_simple_eval_arginfo, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_view_simple, display, yaf_view_display_arginfo, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_view_simple, assignRef, yaf_view_simple_assign_by_ref_arginfo, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_view_simple, clear, yaf_view_simple_clear_arginfo, ZEND_ACC_PUBLIC)
@@ -931,8 +931,8 @@ YAF_STARTUP_FUNCTION(view_simple) {
 	yaf_view_simple_ce = zend_register_internal_class_ex(&ce, NULL, NULL TSRMLS_CC);
 
 	zend_declare_property_null(yaf_view_simple_ce, ZEND_STRL(YAF_VIEW_PROPERTY_NAME_TPLVARS), ZEND_ACC_PROTECTED TSRMLS_CC);
-	zend_declare_property_null(yaf_view_simple_ce, ZEND_STRL(YAF_VIEW_PROPERTY_NAME_TPLDIR),  ZEND_ACC_PROTECTED TSRMLS_CC);
-	zend_declare_property_null(yaf_view_simple_ce, ZEND_STRL(YAF_VIEW_PROPERTY_NAME_OPTS),  ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(yaf_view_simple_ce, ZEND_STRL(YAF_VIEW_PROPERTY_NAME_TPLDIR),	ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(yaf_view_simple_ce, ZEND_STRL(YAF_VIEW_PROPERTY_NAME_OPTS),	ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	zend_class_implements(yaf_view_simple_ce TSRMLS_CC, 1, yaf_view_interface_ce);
 

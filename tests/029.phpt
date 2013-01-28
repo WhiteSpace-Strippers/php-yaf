@@ -19,12 +19,12 @@ print_r($view->get());
 --EXPECTF--
 bArray
 (
-    [a] => b
-    [b] => a
+		[a] => b
+		[b] => a
 )
 Array
 (
-    [a] => b
+		[a] => b
 )
 Array
 (

@@ -6,24 +6,24 @@ Check for Yaf_Loader with spl_autoload
 yaf.use_spl_autoload=0
 yaf.lowcase_path=0
 --FILE--
-<?php 
+<?php
 $config = array(
 	"application" => array(
 		"directory" => realpath(dirname(__FILE__)),
-        "library" => array(
-            "directory" => "/tmp",
-            "namespace" => "Foo",
-        ),
+				"library" => array(
+						"directory" => "/tmp",
+						"namespace" => "Foo",
+				),
 	),
 );
 
 function pre_load($name) {
-    var_dump($name);
+		var_dump($name);
 }
 
 function load($name) {
-    eval("class " . $name . " {} ");
-    return TRUE;
+		eval("class " . $name . " {} ");
+		return TRUE;
 }
 
 spl_autoload_register("pre_load");

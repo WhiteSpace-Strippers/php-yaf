@@ -3,7 +3,7 @@ Check for Yaf_Route_Static
 --SKIPIF--
 <?php if (!extension_loaded("yaf")) print "skip"; ?>
 --FILE--
-<?php 
+<?php
 $request_uri = "/prefix/controller/action/name/laruence/age/28";
 $base_uri	 = "/prefix/";
 
@@ -22,20 +22,20 @@ print_r($request);
 bool(true)
 Yaf_Request_Http Object
 (
-    [module] => 
-    [controller] => controller
-    [action] => action
-    [method] => Cli
-    [params:protected] => Array
-        (
-            [name] => laruence
-            [age] => 28
-        )
+		[module] =>
+		[controller] => controller
+		[action] => action
+		[method] => Cli
+		[params:protected] => Array
+				(
+						[name] => laruence
+						[age] => 28
+				)
 
-    [language:protected] => 
-    [_exception:protected] => 
-    [_base_uri:protected] => /prefix/
-    [uri:protected] => /prefix/controller/action/name/laruence/age/28
-    [dispatched:protected] => 
-    [routed:protected] => 
+		[language:protected] =>
+		[_exception:protected] =>
+		[_base_uri:protected] => /prefix/
+		[uri:protected] => /prefix/controller/action/name/laruence/age/28
+		[dispatched:protected] =>
+		[routed:protected] =>
 )

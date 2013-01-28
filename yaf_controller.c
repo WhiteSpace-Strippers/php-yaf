@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: yaf_controller.c 329197 2013-01-18 05:55:37Z laruence $ */
@@ -41,36 +41,36 @@ ZEND_BEGIN_ARG_INFO_EX(yaf_controller_void_arginfo, 0, 0, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(yaf_controller_initview_arginfo, 0, 0, 0)
-    ZEND_ARG_ARRAY_INFO(0, options, 1)
+		ZEND_ARG_ARRAY_INFO(0, options, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(yaf_controller_getiarg_arginfo, 0, 0, 1)
-    ZEND_ARG_INFO(0, name)
+		ZEND_ARG_INFO(0, name)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(yaf_controller_setvdir_arginfo, 0, 0, 1)
-    ZEND_ARG_INFO(0, view_directory)
+		ZEND_ARG_INFO(0, view_directory)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(yaf_controller_forward_arginfo, 0, 0, 1)
-    ZEND_ARG_INFO(0, module)
-    ZEND_ARG_INFO(0, controller)
-    ZEND_ARG_INFO(0, action)
-    ZEND_ARG_ARRAY_INFO(0, paramters, 1)
+		ZEND_ARG_INFO(0, module)
+		ZEND_ARG_INFO(0, controller)
+		ZEND_ARG_INFO(0, action)
+		ZEND_ARG_ARRAY_INFO(0, paramters, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(yaf_controller_redirect_arginfo, 0, 0, 1)
-    ZEND_ARG_INFO(0, url)
+		ZEND_ARG_INFO(0, url)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(yaf_controller_render_arginfo, 0, 0, 1)
-    ZEND_ARG_INFO(0, tpl)
-    ZEND_ARG_ARRAY_INFO(0, parameters, 1)
+		ZEND_ARG_INFO(0, tpl)
+		ZEND_ARG_ARRAY_INFO(0, parameters, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(yaf_controller_display_arginfo, 0, 0, 1)
-    ZEND_ARG_INFO(0, tpl)
-    ZEND_ARG_ARRAY_INFO(0, parameters, 1)
+		ZEND_ARG_INFO(0, tpl)
+		ZEND_ARG_ARRAY_INFO(0, parameters, 1)
 ZEND_END_ARG_INFO()
 /* }}} */
 
@@ -83,9 +83,9 @@ zval * yaf_controller_render(yaf_controller_t *instance, char *action_name, int 
 	yaf_view_t *view;
 	zend_class_entry *view_ce;
 
-	view   	  = zend_read_property(yaf_controller_ce, instance, ZEND_STRL(YAF_CONTROLLER_PROPERTY_NAME_VIEW), 0 TSRMLS_CC);
-	name	  = zend_read_property(yaf_controller_ce, instance, ZEND_STRL(YAF_CONTROLLER_PROPERTY_NAME_NAME), 0 TSRMLS_CC);
-	view_ext  = YAF_G(view_ext);
+	view	 		= zend_read_property(yaf_controller_ce, instance, ZEND_STRL(YAF_CONTROLLER_PROPERTY_NAME_VIEW), 0 TSRMLS_CC);
+	name		= zend_read_property(yaf_controller_ce, instance, ZEND_STRL(YAF_CONTROLLER_PROPERTY_NAME_NAME), 0 TSRMLS_CC);
+	view_ext	= YAF_G(view_ext);
 
 	self_name = zend_str_tolower_dup(Z_STRVAL_P(name), Z_STRLEN_P(name));
 
@@ -107,7 +107,7 @@ zval * yaf_controller_render(yaf_controller_t *instance, char *action_name, int 
 		tmp++;
 	}
 
-	path_len  = spprintf(&path, 0, "%s%c%s.%s", self_name, DEFAULT_SLASH, action_name, view_ext);
+	path_len	= spprintf(&path, 0, "%s%c%s.%s", self_name, DEFAULT_SLASH, action_name, view_ext);
 
 	efree(self_name);
 	efree(action_name);
@@ -121,13 +121,13 @@ zval * yaf_controller_render(yaf_controller_t *instance, char *action_name, int 
 	} else {
 		zend_call_method_with_1_params(&view, view_ce, NULL, "render", &ret, param);
 	}
-	
+
 	zval_ptr_dtor(&param);
 
 	if (!ret) {
 		return NULL;
 	}
-	
+
 	if (EG(exception)) {
 		zval_ptr_dtor(&ret);
 		return NULL;
@@ -147,12 +147,12 @@ zval * yaf_controller_render(yaf_controller_t *instance, char *action_name, int 
 int yaf_controller_display(yaf_controller_t *instance, char *action_name, int len, zval *var_array TSRMLS_DC) {
 	char *path, *view_ext, *self_name, *tmp;
 	zval *name, *param, *ret = NULL;
-	int  path_len;
+	int	path_len;
 	yaf_view_t	*view;
 
-	view   	  = zend_read_property(yaf_controller_ce, instance, ZEND_STRL(YAF_CONTROLLER_PROPERTY_NAME_VIEW), 1 TSRMLS_CC);
-	name	  = zend_read_property(yaf_controller_ce, instance, ZEND_STRL(YAF_CONTROLLER_PROPERTY_NAME_NAME), 1 TSRMLS_CC);
-	view_ext  = YAF_G(view_ext);
+	view	 		= zend_read_property(yaf_controller_ce, instance, ZEND_STRL(YAF_CONTROLLER_PROPERTY_NAME_VIEW), 1 TSRMLS_CC);
+	name		= zend_read_property(yaf_controller_ce, instance, ZEND_STRL(YAF_CONTROLLER_PROPERTY_NAME_NAME), 1 TSRMLS_CC);
+	view_ext	= YAF_G(view_ext);
 
 	self_name = zend_str_tolower_dup(Z_STRVAL_P(name), Z_STRLEN_P(name));
 
@@ -174,7 +174,7 @@ int yaf_controller_display(yaf_controller_t *instance, char *action_name, int le
 		tmp++;
 	}
 
-	path_len  = spprintf(&path, 0, "%s%c%s.%s", self_name, DEFAULT_SLASH, action_name, view_ext);
+	path_len	= spprintf(&path, 0, "%s%c%s.%s", self_name, DEFAULT_SLASH, action_name, view_ext);
 
 	efree(self_name);
 	efree(action_name);
@@ -298,7 +298,7 @@ PHP_METHOD(yaf_controller, getInvokeArg) {
 	char *name;
 	uint len = 0;
 
-	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s",  &name, &len) == FAILURE) {
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s",	&name, &len) == FAILURE) {
 		WRONG_PARAM_COUNT;
 	}
 
@@ -392,7 +392,7 @@ PHP_METHOD(yaf_controller, forward) {
 		return;
 	}
 
-	request    = zend_read_property(yaf_controller_ce, self, ZEND_STRL(YAF_CONTROLLER_PROPERTY_NAME_REQUEST), 1 TSRMLS_CC);
+	request		= zend_read_property(yaf_controller_ce, self, ZEND_STRL(YAF_CONTROLLER_PROPERTY_NAME_REQUEST), 1 TSRMLS_CC);
 	parameters = zend_read_property(yaf_controller_ce, self, ZEND_STRL(YAF_CONTROLLER_PROPERTY_NAME_ARGS), 1 TSRMLS_CC);
 
 	if (Z_TYPE_P(request) != IS_OBJECT
@@ -416,7 +416,7 @@ PHP_METHOD(yaf_controller, forward) {
 			zend_update_property(request_ce, request, ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_ACTION), module TSRMLS_CC);
 			break;
 		case 2:
-			if (Z_TYPE_P(controller) ==  IS_STRING) {
+			if (Z_TYPE_P(controller) ==	IS_STRING) {
 				zend_update_property(request_ce, request, ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_CONTROLLER), module TSRMLS_CC);
 				zend_update_property(request_ce, request, ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_ACTION), controller TSRMLS_CC);
 			} else if (Z_TYPE_P(controller) == IS_ARRAY) {
@@ -530,8 +530,8 @@ PHP_METHOD(yaf_controller, __clone) {
 /** {{{ yaf_controller_methods
 */
 zend_function_entry yaf_controller_methods[] = {
-	PHP_ME(yaf_controller, render,	    yaf_controller_render_arginfo, 	ZEND_ACC_PROTECTED)
-	PHP_ME(yaf_controller, display,	    yaf_controller_display_arginfo, ZEND_ACC_PROTECTED)
+	PHP_ME(yaf_controller, render,			yaf_controller_render_arginfo, 	ZEND_ACC_PROTECTED)
+	PHP_ME(yaf_controller, display,			yaf_controller_display_arginfo, ZEND_ACC_PROTECTED)
 	PHP_ME(yaf_controller, getRequest,	yaf_controller_void_arginfo, 	ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_controller, getResponse,	yaf_controller_void_arginfo, 	ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_controller, getModuleName,yaf_controller_void_arginfo, 	ZEND_ACC_PUBLIC)
@@ -539,9 +539,9 @@ zend_function_entry yaf_controller_methods[] = {
 	PHP_ME(yaf_controller, initView,	yaf_controller_initview_arginfo,ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_controller, setViewpath,	yaf_controller_setvdir_arginfo, ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_controller, getViewpath,	yaf_controller_void_arginfo, 	ZEND_ACC_PUBLIC)
-	PHP_ME(yaf_controller, forward,	   	yaf_controller_forward_arginfo, ZEND_ACC_PUBLIC)
-	PHP_ME(yaf_controller, redirect,    yaf_controller_redirect_arginfo,ZEND_ACC_PUBLIC)
-	PHP_ME(yaf_controller, getInvokeArgs,yaf_controller_void_arginfo,   ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_controller, forward,		 	yaf_controller_forward_arginfo, ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_controller, redirect,		yaf_controller_redirect_arginfo,ZEND_ACC_PUBLIC)
+	PHP_ME(yaf_controller, getInvokeArgs,yaf_controller_void_arginfo,	 ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_controller, getInvokeArg, yaf_controller_getiarg_arginfo,ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_controller, __construct,	NULL, 							ZEND_ACC_CTOR|ZEND_ACC_FINAL|ZEND_ACC_PUBLIC)
 	PHP_ME(yaf_controller, __clone, 	NULL, 							ZEND_ACC_PRIVATE|ZEND_ACC_FINAL)

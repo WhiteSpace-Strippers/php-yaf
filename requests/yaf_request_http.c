@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: http.c 329197 2013-01-18 05:55:37Z laruence $ */
@@ -46,14 +46,14 @@ yaf_request_t * yaf_request_http_instance(yaf_request_t *this_ptr, char *request
 		object_init_ex(instance, yaf_request_http_ce);
 	}
 
-    MAKE_STD_ZVAL(method);
-    if (SG(request_info).request_method) {
-        ZVAL_STRING(method, (char *)SG(request_info).request_method, 1);
-    } else if (strncasecmp(sapi_module.name, "cli", 3)) {
-        ZVAL_STRING(method, "Unknow", 1);
-    } else {
-        ZVAL_STRING(method, "Cli", 1);
-    }
+		MAKE_STD_ZVAL(method);
+		if (SG(request_info).request_method) {
+				ZVAL_STRING(method, (char *)SG(request_info).request_method, 1);
+		} else if (strncasecmp(sapi_module.name, "cli", 3)) {
+				ZVAL_STRING(method, "Unknow", 1);
+		} else {
+				ZVAL_STRING(method, "Cli", 1);
+		}
 	zend_update_property(yaf_request_http_ce, instance, ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_METHOD), method TSRMLS_CC);
 	zval_ptr_dtor(&method);
 
@@ -108,7 +108,7 @@ yaf_request_t * yaf_request_http_instance(yaf_request_t *this_ptr, char *request
 
 					php_url_free(url_info);
 				} else {
-					char *pos  = NULL;
+					char *pos	= NULL;
 					if ((pos = strstr(Z_STRVAL_P(uri), "?"))) {
 						MAKE_STD_ZVAL(settled_uri);
 						ZVAL_STRINGL(settled_uri, Z_STRVAL_P(uri), pos - Z_STRVAL_P(uri), 1);
@@ -170,7 +170,7 @@ YAF_REQUEST_METHOD(yaf_request_http, Query, 	YAF_GLOBAL_VARS_GET);
 
 /** {{{ proto public Yaf_Request_Http::getPost(mixed $name, mixed $default = NULL)
 */
-YAF_REQUEST_METHOD(yaf_request_http, Post,  	YAF_GLOBAL_VARS_POST);
+YAF_REQUEST_METHOD(yaf_request_http, Post,		YAF_GLOBAL_VARS_POST);
 /* }}} */
 
 /** {{{ proto public Yaf_Request_Http::getRequet(mixed $name, mixed $default = NULL)
@@ -252,9 +252,9 @@ PHP_METHOD(yaf_request_http, get) {
 */
 PHP_METHOD(yaf_request_http, __construct) {
 	char *request_uri = NULL;
-	char *base_uri	  = NULL;
-	int  rlen		  = 0;
-	int  blen 		  = 0;
+	char *base_uri		= NULL;
+	int	rlen			= 0;
+	int	blen 			= 0;
 
 	yaf_request_t *self = getThis();
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "|ss", &request_uri, &rlen, &base_uri, &blen) == FAILURE) {

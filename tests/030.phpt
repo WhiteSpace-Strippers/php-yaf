@@ -9,9 +9,9 @@ yaf.library="/php/global/dir"
 $file = dirname(__FILE__) . "/simple.ini";
 
 try {
-  $config = new Yaf_Config_Ini($file, "ex");
-} catch (Exception $e) { 
-  print_r($e->getMessage());
+	$config = new Yaf_Config_Ini($file, "ex");
+} catch (Exception $e) {
+	print_r($e->getMessage());
 }
 
 ?>

@@ -3,7 +3,7 @@ Check for Yaf_Config_Ini
 --SKIPIF--
 <?php if (!extension_loaded("yaf")) print "skip"; ?>
 --FILE--
-<?php 
+<?php
 $file = dirname(__FILE__) . "/simple.ini";
 
 $config = new Yaf_Config_Ini($file);
@@ -29,366 +29,366 @@ var_dump(count($sick));
 --EXPECTF--
 Yaf_Config_Ini Object
 (
-    [_config:protected] => Array
-        (
-            [base] => Array
-                (
-                    [application] => Array
-                        (
-                            [directory] => APPLICATION_PATH/applcation
-                        )
+		[_config:protected] => Array
+				(
+						[base] => Array
+								(
+										[application] => Array
+												(
+														[directory] => APPLICATION_PATH/applcation
+												)
 
-                    [name] => base
-                    [array] => Array
-                        (
-                            [1] => 1
-                            [name] => name
-                        )
+										[name] => base
+										[array] => Array
+												(
+														[1] => 1
+														[name] => name
+												)
 
-                    [5] => 5
-                    [routes] => Array
-                        (
-                            [regex] => Array
-                                (
-                                    [type] => regex
-                                    [match] => ^/ap/(.*)
-                                    [route] => Array
-                                        (
-                                            [controller] => Index
-                                            [action] => action
-                                        )
+										[5] => 5
+										[routes] => Array
+												(
+														[regex] => Array
+																(
+																		[type] => regex
+																		[match] => ^/ap/(.*)
+																		[route] => Array
+																				(
+																						[controller] => Index
+																						[action] => action
+																				)
 
-                                    [map] => Array
-                                        (
-                                            [0] => name
-                                            [1] => name
-                                            [2] => value
-                                        )
+																		[map] => Array
+																				(
+																						[0] => name
+																						[1] => name
+																						[2] => value
+																				)
 
-                                )
+																)
 
-                            [simple] => Array
-                                (
-                                    [type] => simple
-                                    [controller] => c
-                                    [module] => m
-                                    [action] => a
-                                )
+														[simple] => Array
+																(
+																		[type] => simple
+																		[controller] => c
+																		[module] => m
+																		[action] => a
+																)
 
-                            [supervar] => Array
-                                (
-                                    [type] => supervar
-                                    [varname] => c
-                                )
+														[supervar] => Array
+																(
+																		[type] => supervar
+																		[varname] => c
+																)
 
-                            [rewrite] => Array
-                                (
-                                    [type] => rewrite
-                                    [match] => /yaf/:name/:value
-                                    [route] => Array
-                                        (
-                                            [controller] => Index
-                                            [action] => action
-                                        )
+														[rewrite] => Array
+																(
+																		[type] => rewrite
+																		[match] => /yaf/:name/:value
+																		[route] => Array
+																				(
+																						[controller] => Index
+																						[action] => action
+																				)
 
-                                )
+																)
 
-                        )
+												)
 
-                )
+								)
 
-            [extra] => Array
-                (
-                    [application] => Array
-                        (
-                            [directory] => APPLICATION_PATH/applcation
-                        )
+						[extra] => Array
+								(
+										[application] => Array
+												(
+														[directory] => APPLICATION_PATH/applcation
+												)
 
-                    [name] => extra
-                    [array] => Array
-                        (
-                            [1] => 1
-                            [name] => new_name
-                            [2] => test
-                        )
+										[name] => extra
+										[array] => Array
+												(
+														[1] => 1
+														[name] => new_name
+														[2] => test
+												)
 
-                    [5] => 5
-                    [routes] => Array
-                        (
-                            [regex] => Array
-                                (
-                                    [type] => regex
-                                    [match] => ^/ap/(.*)
-                                    [route] => Array
-                                        (
-                                            [controller] => Index
-                                            [action] => action
-                                        )
+										[5] => 5
+										[routes] => Array
+												(
+														[regex] => Array
+																(
+																		[type] => regex
+																		[match] => ^/ap/(.*)
+																		[route] => Array
+																				(
+																						[controller] => Index
+																						[action] => action
+																				)
 
-                                    [map] => Array
-                                        (
-                                            [0] => name
-                                            [1] => name
-                                            [2] => value
-                                        )
+																		[map] => Array
+																				(
+																						[0] => name
+																						[1] => name
+																						[2] => value
+																				)
 
-                                )
+																)
 
-                            [simple] => Array
-                                (
-                                    [type] => simple
-                                    [controller] => c
-                                    [module] => m
-                                    [action] => a
-                                )
+														[simple] => Array
+																(
+																		[type] => simple
+																		[controller] => c
+																		[module] => m
+																		[action] => a
+																)
 
-                            [supervar] => Array
-                                (
-                                    [type] => supervar
-                                    [varname] => c
-                                )
+														[supervar] => Array
+																(
+																		[type] => supervar
+																		[varname] => c
+																)
 
-                            [rewrite] => Array
-                                (
-                                    [type] => rewrite
-                                    [match] => /yaf/:name/:value
-                                    [route] => Array
-                                        (
-                                            [controller] => Index
-                                            [action] => action
-                                        )
+														[rewrite] => Array
+																(
+																		[type] => rewrite
+																		[match] => /yaf/:name/:value
+																		[route] => Array
+																				(
+																						[controller] => Index
+																						[action] => action
+																				)
 
-                                )
+																)
 
-                        )
+												)
 
-                    [value] => 2
-                )
+										[value] => 2
+								)
 
-            [product] => Array
-                (
-                    [application] => Array
-                        (
-                            [directory] => APPLICATION_PATH/applcation
-                        )
+						[product] => Array
+								(
+										[application] => Array
+												(
+														[directory] => APPLICATION_PATH/applcation
+												)
 
-                    [name] => extra
-                    [array] => Array
-                        (
-                            [1] => 1
-                            [name] => new_name
-                            [2] => test
-                        )
+										[name] => extra
+										[array] => Array
+												(
+														[1] => 1
+														[name] => new_name
+														[2] => test
+												)
 
-                    [5] => 5
-                    [routes] => Array
-                        (
-                            [regex] => Array
-                                (
-                                    [type] => regex
-                                    [match] => ^/ap/(.*)
-                                    [route] => Array
-                                        (
-                                            [controller] => Index
-                                            [action] => action
-                                        )
+										[5] => 5
+										[routes] => Array
+												(
+														[regex] => Array
+																(
+																		[type] => regex
+																		[match] => ^/ap/(.*)
+																		[route] => Array
+																				(
+																						[controller] => Index
+																						[action] => action
+																				)
 
-                                    [map] => Array
-                                        (
-                                            [0] => name
-                                            [1] => name
-                                            [2] => value
-                                        )
+																		[map] => Array
+																				(
+																						[0] => name
+																						[1] => name
+																						[2] => value
+																				)
 
-                                )
+																)
 
-                            [simple] => Array
-                                (
-                                    [type] => simple
-                                    [controller] => c
-                                    [module] => m
-                                    [action] => a
-                                )
+														[simple] => Array
+																(
+																		[type] => simple
+																		[controller] => c
+																		[module] => m
+																		[action] => a
+																)
 
-                            [supervar] => Array
-                                (
-                                    [type] => supervar
-                                    [varname] => c
-                                )
+														[supervar] => Array
+																(
+																		[type] => supervar
+																		[varname] => c
+																)
 
-                            [rewrite] => Array
-                                (
-                                    [type] => rewrite
-                                    [match] => /yaf/:name/:value
-                                    [route] => Array
-                                        (
-                                            [controller] => Index
-                                            [action] => action
-                                        )
+														[rewrite] => Array
+																(
+																		[type] => rewrite
+																		[match] => /yaf/:name/:value
+																		[route] => Array
+																				(
+																						[controller] => Index
+																						[action] => action
+																				)
 
-                                )
+																)
 
-                        )
+												)
 
-                    [value] => 2
-                )
+										[value] => 2
+								)
 
-            [nocatch] => Array
-                (
-                    [application] => Array
-                        (
-                            [directory] => APPLICATION_PATH/applcation
-                            [dispatcher] => Array
-                                (
-                                    [throwException] => 
-                                    [catchException] => 1
-                                )
+						[nocatch] => Array
+								(
+										[application] => Array
+												(
+														[directory] => APPLICATION_PATH/applcation
+														[dispatcher] => Array
+																(
+																		[throwException] =>
+																		[catchException] => 1
+																)
 
-                        )
+												)
 
-                    [name] => extra
-                    [array] => Array
-                        (
-                            [1] => 1
-                            [name] => new_name
-                            [2] => test
-                        )
+										[name] => extra
+										[array] => Array
+												(
+														[1] => 1
+														[name] => new_name
+														[2] => test
+												)
 
-                    [5] => 5
-                    [routes] => Array
-                        (
-                            [regex] => Array
-                                (
-                                    [type] => regex
-                                    [match] => ^/ap/(.*)
-                                    [route] => Array
-                                        (
-                                            [controller] => Index
-                                            [action] => action
-                                        )
+										[5] => 5
+										[routes] => Array
+												(
+														[regex] => Array
+																(
+																		[type] => regex
+																		[match] => ^/ap/(.*)
+																		[route] => Array
+																				(
+																						[controller] => Index
+																						[action] => action
+																				)
 
-                                    [map] => Array
-                                        (
-                                            [0] => name
-                                            [1] => name
-                                            [2] => value
-                                        )
+																		[map] => Array
+																				(
+																						[0] => name
+																						[1] => name
+																						[2] => value
+																				)
 
-                                )
+																)
 
-                            [simple] => Array
-                                (
-                                    [type] => simple
-                                    [controller] => c
-                                    [module] => m
-                                    [action] => a
-                                )
+														[simple] => Array
+																(
+																		[type] => simple
+																		[controller] => c
+																		[module] => m
+																		[action] => a
+																)
 
-                            [supervar] => Array
-                                (
-                                    [type] => supervar
-                                    [varname] => c
-                                )
+														[supervar] => Array
+																(
+																		[type] => supervar
+																		[varname] => c
+																)
 
-                            [rewrite] => Array
-                                (
-                                    [type] => rewrite
-                                    [match] => /yaf/:name/:age
-                                    [route] => Array
-                                        (
-                                            [controller] => Index
-                                            [action] => action
-                                        )
+														[rewrite] => Array
+																(
+																		[type] => rewrite
+																		[match] => /yaf/:name/:age
+																		[route] => Array
+																				(
+																						[controller] => Index
+																						[action] => action
+																				)
 
-                                )
+																)
 
-                        )
+												)
 
-                    [value] => 2
-                )
+										[value] => 2
+								)
 
-            [envtest] => Array
-                (
-                    [env] => 
-                    [ini] => 
-                    [const] => FOO
-                )
+						[envtest] => Array
+								(
+										[env] =>
+										[ini] =>
+										[const] => FOO
+								)
 
-        )
+				)
 
-    [_readonly:protected] => 1
+		[_readonly:protected] => 1
 )
 Yaf_Config_Ini Object
 (
-    [_config:protected] => Array
-        (
-            [application] => Array
-                (
-                    [directory] => APPLICATION_PATH/applcation
-                )
+		[_config:protected] => Array
+				(
+						[application] => Array
+								(
+										[directory] => APPLICATION_PATH/applcation
+								)
 
-            [name] => extra
-            [array] => Array
-                (
-                    [1] => 1
-                    [name] => new_name
-                    [2] => test
-                )
+						[name] => extra
+						[array] => Array
+								(
+										[1] => 1
+										[name] => new_name
+										[2] => test
+								)
 
-            [5] => 5
-            [routes] => Array
-                (
-                    [regex] => Array
-                        (
-                            [type] => regex
-                            [match] => ^/ap/(.*)
-                            [route] => Array
-                                (
-                                    [controller] => Index
-                                    [action] => action
-                                )
+						[5] => 5
+						[routes] => Array
+								(
+										[regex] => Array
+												(
+														[type] => regex
+														[match] => ^/ap/(.*)
+														[route] => Array
+																(
+																		[controller] => Index
+																		[action] => action
+																)
 
-                            [map] => Array
-                                (
-                                    [0] => name
-                                    [1] => name
-                                    [2] => value
-                                )
+														[map] => Array
+																(
+																		[0] => name
+																		[1] => name
+																		[2] => value
+																)
 
-                        )
+												)
 
-                    [simple] => Array
-                        (
-                            [type] => simple
-                            [controller] => c
-                            [module] => m
-                            [action] => a
-                        )
+										[simple] => Array
+												(
+														[type] => simple
+														[controller] => c
+														[module] => m
+														[action] => a
+												)
 
-                    [supervar] => Array
-                        (
-                            [type] => supervar
-                            [varname] => c
-                        )
+										[supervar] => Array
+												(
+														[type] => supervar
+														[varname] => c
+												)
 
-                    [rewrite] => Array
-                        (
-                            [type] => rewrite
-                            [match] => /yaf/:name/:value
-                            [route] => Array
-                                (
-                                    [controller] => Index
-                                    [action] => action
-                                )
+										[rewrite] => Array
+												(
+														[type] => rewrite
+														[match] => /yaf/:name/:value
+														[route] => Array
+																(
+																		[controller] => Index
+																		[action] => action
+																)
 
-                        )
+												)
 
-                )
+								)
 
-            [value] => 2
-        )
+						[value] => 2
+				)
 
-    [_readonly:protected] => 1
+		[_readonly:protected] => 1
 )
 bool(true)
 baseextraproductnocatchenvtestbool(false)

@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
  */
 
 /* $Id: static.c 329200 2013-01-18 06:26:40Z laruence $ */
@@ -70,22 +70,22 @@ int yaf_route_pathinfo_route(yaf_request_t *request, char *req_uri, int req_uri_
 		if ((s = strstr(p, "/")) != NULL) {
 			if (yaf_application_is_module_name(p, s-p TSRMLS_CC)) {
 				module = estrndup(p, s - p);
-				p  = s + 1;
-		        strip_slashs(p);
+				p	= s + 1;
+						strip_slashs(p);
 				if ((s = strstr(p, "/")) != NULL) {
 					controller = estrndup(p, s - p);
-					p  = s + 1;
+					p	= s + 1;
 				}
 			} else {
 				controller = estrndup(p, s - p);
-				p  = s + 1;
+				p	= s + 1;
 			}
 		}
 
 		strip_slashs(p);
 		if ((s = strstr(p, "/")) != NULL) {
 			action = estrndup(p, s - p);
-			p  = s + 1;
+			p	= s + 1;
 		}
 
 		strip_slashs(p);
@@ -119,7 +119,7 @@ int yaf_route_pathinfo_route(yaf_request_t *request, char *req_uri, int req_uri_
 			action = controller;
 			controller = module;
 			module = NULL;
-	    } else if (controller && action == NULL ) {
+			} else if (controller && action == NULL ) {
 			/* /controller */
 			if (YAF_G(action_prefer)) {
 				action = controller;
@@ -158,17 +158,17 @@ int yaf_route_pathinfo_route(yaf_request_t *request, char *req_uri, int req_uri_
 int yaf_route_static_route(yaf_route_t *route, yaf_request_t *request TSRMLS_DC) {
 	zval *zuri, *base_uri;
 	char *req_uri;
-	int  req_uri_len;
+	int	req_uri_len;
 
 	zuri 	 = zend_read_property(yaf_request_ce, request, ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_URI), 1 TSRMLS_CC);
 	base_uri = zend_read_property(yaf_request_ce, request, ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_BASE), 1 TSRMLS_CC);
 
 	if (base_uri && IS_STRING == Z_TYPE_P(base_uri)
 			&& !strncasecmp(Z_STRVAL_P(zuri), Z_STRVAL_P(base_uri), Z_STRLEN_P(base_uri))) {
-		req_uri  = estrdup(Z_STRVAL_P(zuri) + Z_STRLEN_P(base_uri));
+		req_uri	= estrdup(Z_STRVAL_P(zuri) + Z_STRLEN_P(base_uri));
 		req_uri_len = Z_STRLEN_P(zuri) - Z_STRLEN_P(base_uri);
 	} else {
-		req_uri  = estrdup(Z_STRVAL_P(zuri));
+		req_uri	= estrdup(Z_STRVAL_P(zuri));
 		req_uri_len = Z_STRLEN_P(zuri);
 	}
 

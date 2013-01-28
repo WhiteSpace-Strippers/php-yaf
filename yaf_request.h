@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: yaf_request.h 329002 2013-01-07 12:55:53Z laruence $ */
@@ -29,22 +29,22 @@
 #define YAF_REQUEST_PROPERTY_NAME_LANG		"language"
 #define YAF_REQUEST_PROPERTY_NAME_ROUTED		"routed"
 #define YAF_REQUEST_PROPERTY_NAME_BASE		"_base_uri"
-#define YAF_REQUEST_PROPERTY_NAME_EXCEPTION  "_exception"
+#define YAF_REQUEST_PROPERTY_NAME_EXCEPTION	"_exception"
 
 #define YAF_REQUEST_SERVER_URI				"request_uri="
 
 #define YAF_GLOBAL_VARS_TYPE					unsigned int
 #define YAF_GLOBAL_VARS_POST 				TRACK_VARS_POST
-#define YAF_GLOBAL_VARS_GET     				TRACK_VARS_GET
-#define YAF_GLOBAL_VARS_ENV     				TRACK_VARS_ENV
-#define YAF_GLOBAL_VARS_FILES   				TRACK_VARS_FILES
-#define YAF_GLOBAL_VARS_SERVER  				TRACK_VARS_SERVER
+#define YAF_GLOBAL_VARS_GET		 				TRACK_VARS_GET
+#define YAF_GLOBAL_VARS_ENV		 				TRACK_VARS_ENV
+#define YAF_GLOBAL_VARS_FILES	 				TRACK_VARS_FILES
+#define YAF_GLOBAL_VARS_SERVER					TRACK_VARS_SERVER
 #define YAF_GLOBAL_VARS_REQUEST 				TRACK_VARS_REQUEST
-#define YAF_GLOBAL_VARS_COOKIE  				TRACK_VARS_COOKIE
+#define YAF_GLOBAL_VARS_COOKIE					TRACK_VARS_COOKIE
 
 #define YAF_REQUEST_IS_METHOD(x) \
 PHP_METHOD(yaf_request, is##x) {\
-	zval * method  = zend_read_property(Z_OBJCE_P(getThis()), getThis(), ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_METHOD), 0 TSRMLS_CC);\
+	zval * method	= zend_read_property(Z_OBJCE_P(getThis()), getThis(), ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_METHOD), 0 TSRMLS_CC);\
 	if (strncasecmp(#x, Z_STRVAL_P(method), Z_STRLEN_P(method)) == 0) { \
 		RETURN_TRUE; \
 	} \
@@ -54,8 +54,8 @@ PHP_METHOD(yaf_request, is##x) {\
 #define YAF_REQUEST_METHOD(ce, x, type) \
 PHP_METHOD(ce, get##x) { \
 	char *name; \
-	int  len; \
-    zval *ret; \
+	int	len; \
+		zval *ret; \
 	zval *def = NULL; \
 	if (ZEND_NUM_ARGS() == 0) { \
 		ret = yaf_request_query(type, NULL, 0 TSRMLS_CC); \

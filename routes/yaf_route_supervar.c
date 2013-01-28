@@ -1,17 +1,17 @@
  /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: supervar.c 329197 2013-01-18 05:55:37Z laruence $ */
@@ -37,7 +37,7 @@ zend_class_entry *yaf_route_supervar_ce;
 /** {{{ ARG_INFO
  */
 ZEND_BEGIN_ARG_INFO_EX(yaf_route_supervar_construct_arginfo, 0, 0, 1)
-    ZEND_ARG_INFO(0, supervar_name)
+		ZEND_ARG_INFO(0, supervar_name)
 ZEND_END_ARG_INFO()
 /* }}} */
 
@@ -56,7 +56,7 @@ int yaf_route_supervar_route(yaf_route_t *route, yaf_request_t *request TSRMLS_D
 	}
 
 	req_uri = estrndup(Z_STRVAL_P(zuri), Z_STRLEN_P(zuri));
-    yaf_route_pathinfo_route(request, req_uri, Z_STRLEN_P(zuri) TSRMLS_CC);
+		yaf_route_pathinfo_route(request, req_uri, Z_STRLEN_P(zuri) TSRMLS_CC);
 	efree(req_uri);
 	return 1;
 }
@@ -72,7 +72,7 @@ yaf_route_t * yaf_route_supervar_instance(yaf_route_t *this_ptr, zval *name TSRM
 	}
 
 	if (this_ptr) {
-		instance  = this_ptr;
+		instance	= this_ptr;
 	} else {
 		MAKE_STD_ZVAL(instance);
 		object_init_ex(instance, yaf_route_supervar_ce);
@@ -102,7 +102,7 @@ PHP_METHOD(yaf_route_supervar, route) {
 PHP_METHOD(yaf_route_supervar, __construct) {
 	zval *var;
 
-	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "z", &var) ==   FAILURE) {
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "z", &var) ==	 FAILURE) {
 		YAF_UNINITIALIZED_OBJECT(getThis());
 		return;
 	}
@@ -122,7 +122,7 @@ PHP_METHOD(yaf_route_supervar, __construct) {
 zend_function_entry yaf_route_supervar_methods[] = {
 	PHP_ME(yaf_route_supervar, __construct, yaf_route_supervar_construct_arginfo, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
 	PHP_ME(yaf_route_supervar, route, yaf_route_route_arginfo, ZEND_ACC_PUBLIC)
-    {NULL, NULL, NULL}
+		{NULL, NULL, NULL}
 };
 /* }}} */
 
@@ -135,7 +135,7 @@ YAF_STARTUP_FUNCTION(route_supervar) {
 	zend_class_implements(yaf_route_supervar_ce TSRMLS_CC, 1, yaf_route_ce);
 	yaf_route_supervar_ce->ce_flags |= ZEND_ACC_FINAL_CLASS;
 
-	zend_declare_property_null(yaf_route_supervar_ce, ZEND_STRL(YAF_ROUTE_SUPERVAR_PROPETY_NAME_VAR),  ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(yaf_route_supervar_ce, ZEND_STRL(YAF_ROUTE_SUPERVAR_PROPETY_NAME_VAR),	ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	return SUCCESS;
 }

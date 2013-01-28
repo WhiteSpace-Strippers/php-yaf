@@ -3,7 +3,7 @@ Yaf_Route_Regex map is optional
 --SKIPIF--
 <?php if (!extension_loaded("yaf")) print "skip"; ?>
 --FILE--
-<?php 
+<?php
 
 $request = new Yaf_Request_Http("/subdir/ap/1.2/name/value", "/subdir");
 
@@ -11,15 +11,15 @@ $router = new Yaf_Router();
 
 $router->addConfig(
  array(
-    array(
-    "type" => "regex",
-    "match" => "#^/ap/([^/]*)/*#i",
-    "route" => array(
-        array(
-            "action" => 'ap',
-            ),
-        ),
-  ) 
+		array(
+		"type" => "regex",
+		"match" => "#^/ap/([^/]*)/*#i",
+		"route" => array(
+				array(
+						"action" => 'ap',
+						),
+				),
+	)
  )
 )->route($request);
 

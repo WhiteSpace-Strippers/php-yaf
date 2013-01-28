@@ -9,16 +9,16 @@ yaf.lowcase_path=0
 <?php
 
 function shut_down() {
-   echo "done";
+	 echo "done";
 }
 
 register_shutdown_function("shut_down");
 
 function view($file){
-    static $view;
-   
-    $view = new Yaf_View_Simple(dirname(__FILE__));
-    return $view->render($file);
+		static $view;
+
+		$view = new Yaf_View_Simple(dirname(__FILE__));
+		return $view->render($file);
 }
 
 file_put_contents(dirname(__FILE__) . '/outer.phtml', "1 <?php print view('inner.phtml');?> 3\n");
@@ -44,6 +44,6 @@ print (view('outer.phtml'));
 1 2 3
 1 2 3
 1 2 3
-1 
+1
 Fatal error: Call to undefined function undefined_function() in %sinner.phtml on line %d
 done

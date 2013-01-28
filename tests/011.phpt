@@ -3,12 +3,12 @@ Check for Yaf_Route_Rewrite
 --SKIPIF--
 <?php if (!extension_loaded("yaf")) print "skip"; ?>
 --FILE--
-<?php 
+<?php
 $request = new Yaf_Request_Http("/subdir/ap/1.2/name/value", "/subdir");
 
 $router = new Yaf_Router();
 
-$route  = new Yaf_Route_Rewrite(
+$route	= new Yaf_Route_Rewrite(
 	"/subdir/:name/:version",
 	array(
 		"action" => "version",
@@ -17,7 +17,7 @@ $route  = new Yaf_Route_Rewrite(
 
 $router->addRoute("subdir", $route)->addRoute("ap", new Yaf_Route_Rewrite(
 	"/ap/:version/*",
-    array(
+		array(
 		"action" => 'ap',
 	)
 ))->route($request);

@@ -2,15 +2,15 @@
 Check for Yaf_View_Simple with short_tag_open
 --SKIPIF--
 <?php
-if (!extension_loaded("yaf")) print "skip"; 
+if (!extension_loaded("yaf")) print "skip";
 if (version_compare(PHP_VERSION, '5.4.0') >= 0) {
-   print "skip PHP 5.4 remove short_open_tag";
-} 
+	 print "skip PHP 5.4 remove short_open_tag";
+}
 ?>
 --INI--
 short_open_tag = 0
 --FILE--
-<?php 
+<?php
 $view = new Yaf_View_Simple(dirname(__FILE__));
 $tpl = dirname(__FILE__) . '/short_tag_test.phtml';
 
@@ -36,14 +36,14 @@ string(1) "0"
 <?=$name?>
 Yaf_View_Simple Object
 (
-    [_tpl_vars:protected] => Array
-        (
-        )
+		[_tpl_vars:protected] => Array
+				(
+				)
 
-    [_tpl_dir:protected] => %s
-    [_options:protected] => Array
-        (
-            [short_tag] => 0
-        )
+		[_tpl_dir:protected] => %s
+		[_options:protected] => Array
+				(
+						[short_tag] => 0
+				)
 
 )

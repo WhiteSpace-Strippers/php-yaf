@@ -1,17 +1,17 @@
 /*
-  +----------------------------------------------------------------------+
-  | Yet Another Framework                                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt                                  |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Xinchen Hui  <laruence@php.net>                              |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| Yet Another Framework																								|
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,			|
+	| that is bundled with this package in the file LICENSE, and is				|
+	| available through the world-wide-web at the following url:					 |
+	| http://www.php.net/license/3_01.txt																	|
+	| If you did not receive a copy of the PHP license and are unable to	 |
+	| obtain it through the world-wide-web, please send a note to					|
+	| license@php.net so we can mail you a copy immediately.							 |
+	+----------------------------------------------------------------------+
+	| Author: Xinchen Hui	<laruence@php.net>															|
+	+----------------------------------------------------------------------+
 */
 
 /* $Id: yaf.c 329002 2013-01-07 12:55:53Z laruence $ */
@@ -57,7 +57,7 @@ zend_function_entry yaf_functions[] = {
 /** {{{ PHP_INI_MH(OnUpdateSeparator)
  */
 PHP_INI_MH(OnUpdateSeparator) {
-	YAF_G(name_separator) = new_value; 
+	YAF_G(name_separator) = new_value;
 	YAF_G(name_separator_len) = new_value_length;
 	return SUCCESS;
 }
@@ -66,20 +66,20 @@ PHP_INI_MH(OnUpdateSeparator) {
 /** {{{ PHP_INI
  */
 PHP_INI_BEGIN()
-	STD_PHP_INI_ENTRY("yaf.library",         	"",  PHP_INI_ALL, OnUpdateString, global_library, zend_yaf_globals, yaf_globals)
-	STD_PHP_INI_BOOLEAN("yaf.action_prefer",   	"0", PHP_INI_ALL, OnUpdateBool, action_prefer, zend_yaf_globals, yaf_globals)
-	STD_PHP_INI_BOOLEAN("yaf.lowcase_path",    	"0", PHP_INI_ALL, OnUpdateBool, lowcase_path, zend_yaf_globals, yaf_globals)
+	STD_PHP_INI_ENTRY("yaf.library",				 	"",	PHP_INI_ALL, OnUpdateString, global_library, zend_yaf_globals, yaf_globals)
+	STD_PHP_INI_BOOLEAN("yaf.action_prefer",	 	"0", PHP_INI_ALL, OnUpdateBool, action_prefer, zend_yaf_globals, yaf_globals)
+	STD_PHP_INI_BOOLEAN("yaf.lowcase_path",			"0", PHP_INI_ALL, OnUpdateBool, lowcase_path, zend_yaf_globals, yaf_globals)
 	STD_PHP_INI_BOOLEAN("yaf.use_spl_autoload", "0", PHP_INI_ALL, OnUpdateBool, use_spl_autoload, zend_yaf_globals, yaf_globals)
 	STD_PHP_INI_ENTRY("yaf.forward_limit", 		"5", PHP_INI_ALL, OnUpdateLongGEZero, forward_limit, zend_yaf_globals, yaf_globals)
 	STD_PHP_INI_BOOLEAN("yaf.name_suffix", 		"1", PHP_INI_ALL, OnUpdateBool, name_suffix, zend_yaf_globals, yaf_globals)
-	PHP_INI_ENTRY("yaf.name_separator", 		"",  PHP_INI_ALL, OnUpdateSeparator)
-	STD_PHP_INI_BOOLEAN("yaf.cache_config",    	"0", PHP_INI_SYSTEM, OnUpdateBool, cache_config, zend_yaf_globals, yaf_globals)
+	PHP_INI_ENTRY("yaf.name_separator", 		"",	PHP_INI_ALL, OnUpdateSeparator)
+	STD_PHP_INI_BOOLEAN("yaf.cache_config",			"0", PHP_INI_SYSTEM, OnUpdateBool, cache_config, zend_yaf_globals, yaf_globals)
 /* {{{ This only effects internally */
-	STD_PHP_INI_BOOLEAN("yaf.st_compatible",     "0", PHP_INI_ALL, OnUpdateBool, st_compatible, zend_yaf_globals, yaf_globals)
+	STD_PHP_INI_BOOLEAN("yaf.st_compatible",		 "0", PHP_INI_ALL, OnUpdateBool, st_compatible, zend_yaf_globals, yaf_globals)
 /* }}} */
-	STD_PHP_INI_ENTRY("yaf.environ",        	"product", PHP_INI_SYSTEM, OnUpdateString, environ, zend_yaf_globals, yaf_globals)
+	STD_PHP_INI_ENTRY("yaf.environ",					"product", PHP_INI_SYSTEM, OnUpdateString, environ, zend_yaf_globals, yaf_globals)
 #ifdef YAF_HAVE_NAMESPACE
-	STD_PHP_INI_BOOLEAN("yaf.use_namespace",   	"0", PHP_INI_SYSTEM, OnUpdateBool, use_namespace, zend_yaf_globals, yaf_globals)
+	STD_PHP_INI_BOOLEAN("yaf.use_namespace",	 	"0", PHP_INI_SYSTEM, OnUpdateBool, use_namespace, zend_yaf_globals, yaf_globals)
 #endif
 PHP_INI_END();
 /* }}} */
@@ -88,7 +88,7 @@ PHP_INI_END();
 */
 PHP_GINIT_FUNCTION(yaf)
 {
-	yaf_globals->autoload_started   = 0;
+	yaf_globals->autoload_started	 = 0;
 	yaf_globals->configs			= NULL;
 	yaf_globals->directory			= NULL;
 	yaf_globals->local_library		= NULL;
@@ -99,7 +99,7 @@ PHP_GINIT_FUNCTION(yaf)
 	yaf_globals->default_action		= YAF_ROUTER_DEFAULT_ACTION;
 	yaf_globals->bootstrap			= YAF_DEFAULT_BOOTSTRAP;
 	yaf_globals->modules			= NULL;
-	yaf_globals->default_route      = NULL;
+	yaf_globals->default_route			= NULL;
 	yaf_globals->suppressing_warning = 0;
 }
 /* }}} */
@@ -110,7 +110,7 @@ PHP_MINIT_FUNCTION(yaf)
 {
 	REGISTER_INI_ENTRIES();
 
-#if PHP_MAJOR_VERSION == 5 && PHP_MINOR_VERSION < 5 
+#if PHP_MAJOR_VERSION == 5 && PHP_MINOR_VERSION < 5
 	php_register_info_logo(YAF_LOGO_GUID, YAF_LOGO_MIME_TYPE, yaf_logo, sizeof(yaf_logo));
 #endif
 

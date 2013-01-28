@@ -7,7 +7,7 @@ Check for Yaf_Router
 
 $router = new Yaf_Router();
 
-$route  = new Yaf_Route_Simple('m', 'c', 'a');
+$route	= new Yaf_Route_Simple('m', 'c', 'a');
 $sroute = new Yaf_Route_Supervar('r');
 
 $router->addRoute("simple", $route)->addRoute("super", $sroute);
@@ -20,52 +20,52 @@ var_dump($router->getRoute("noexists"));
 --EXPECTF--
 Yaf_Router Object
 (
-    [_routes:protected] => Array
-        (
-            [_default] => Yaf_Route_Static Object
-                (
-                )
+		[_routes:protected] => Array
+				(
+						[_default] => Yaf_Route_Static Object
+								(
+								)
 
-            [simple] => Yaf_Route_Simple Object
-                (
-                    [controller:protected] => c
-                    [module:protected] => m
-                    [action:protected] => a
-                )
+						[simple] => Yaf_Route_Simple Object
+								(
+										[controller:protected] => c
+										[module:protected] => m
+										[action:protected] => a
+								)
 
-            [super] => Yaf_Route_Supervar Object
-                (
-                    [_var_name:protected] => r
-                )
+						[super] => Yaf_Route_Supervar Object
+								(
+										[_var_name:protected] => r
+								)
 
-        )
+				)
 
-    [_current:protected] => 
+		[_current:protected] =>
 )
 NULL
 Array
 (
-    [_default] => Yaf_Route_Static Object
-        (
-        )
+		[_default] => Yaf_Route_Static Object
+				(
+				)
 
-    [simple] => Yaf_Route_Simple Object
-        (
-            [controller:protected] => c
-            [module:protected] => m
-            [action:protected] => a
-        )
+		[simple] => Yaf_Route_Simple Object
+				(
+						[controller:protected] => c
+						[module:protected] => m
+						[action:protected] => a
+				)
 
-    [super] => Yaf_Route_Supervar Object
-        (
-            [_var_name:protected] => r
-        )
+		[super] => Yaf_Route_Supervar Object
+				(
+						[_var_name:protected] => r
+				)
 
 )
 Yaf_Route_Simple Object
 (
-    [controller:protected] => c
-    [module:protected] => m
-    [action:protected] => a
+		[controller:protected] => c
+		[module:protected] => m
+		[action:protected] => a
 )
 NULL

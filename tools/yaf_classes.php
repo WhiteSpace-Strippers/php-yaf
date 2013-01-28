@@ -1,5 +1,5 @@
 <?php
-final class Yaf_Application { 
+final class Yaf_Application {
 	/* constants */
 
 	/* properties */
@@ -51,7 +51,7 @@ final class Yaf_Application {
 	}
 }
 
-abstract class Yaf_Bootstrap_Abstract { 
+abstract class Yaf_Bootstrap_Abstract {
 	/* constants */
 
 	/* properties */
@@ -59,7 +59,7 @@ abstract class Yaf_Bootstrap_Abstract {
 	/* methods */
 }
 
-final class Yaf_Dispatcher { 
+final class Yaf_Dispatcher {
 	/* constants */
 
 	/* properties */
@@ -126,7 +126,7 @@ final class Yaf_Dispatcher {
 	}
 }
 
-final class Yaf_Loader { 
+final class Yaf_Loader {
 	/* constants */
 
 	/* properties */
@@ -164,7 +164,7 @@ final class Yaf_Loader {
 	}
 }
 
-abstract class Yaf_Request_Abstract { 
+abstract class Yaf_Request_Abstract {
 	/* constants */
 	const SCHEME_HTTP = http;
 	const SCHEME_HTTPS = https;
@@ -243,7 +243,7 @@ abstract class Yaf_Request_Abstract {
 	}
 }
 
-class Yaf_Request_Http extends Yaf_Request_Abstract { 
+class Yaf_Request_Http extends Yaf_Request_Abstract {
 	/* constants */
 
 	/* properties */
@@ -336,7 +336,7 @@ class Yaf_Request_Http extends Yaf_Request_Abstract {
 	}
 }
 
-final class Yaf_Request_Simple extends Yaf_Request_Abstract { 
+final class Yaf_Request_Simple extends Yaf_Request_Abstract {
 	/* constants */
 	const SCHEME_HTTP = http;
 	const SCHEME_HTTPS = https;
@@ -431,7 +431,7 @@ final class Yaf_Request_Simple extends Yaf_Request_Abstract {
 	}
 }
 
-abstract class Yaf_Response_Abstract { 
+abstract class Yaf_Response_Abstract {
 	/* constants */
 
 	/* properties */
@@ -472,7 +472,7 @@ abstract class Yaf_Response_Abstract {
 	}
 }
 
-class Yaf_Response_Http extends Yaf_Response_Abstract { 
+class Yaf_Response_Http extends Yaf_Response_Abstract {
 	/* constants */
 
 	/* properties */
@@ -514,7 +514,7 @@ class Yaf_Response_Http extends Yaf_Response_Abstract {
 	}
 }
 
-class Yaf_Response_Cli extends Yaf_Response_Abstract { 
+class Yaf_Response_Cli extends Yaf_Response_Abstract {
 	/* constants */
 
 	/* properties */
@@ -555,7 +555,7 @@ class Yaf_Response_Cli extends Yaf_Response_Abstract {
 	}
 }
 
-abstract class Yaf_Controller_Abstract { 
+abstract class Yaf_Controller_Abstract {
 	/* constants */
 
 	/* properties */
@@ -600,7 +600,7 @@ abstract class Yaf_Controller_Abstract {
 	}
 }
 
-abstract class Yaf_Action_Abstract extends Yaf_Controller_Abstract { 
+abstract class Yaf_Action_Abstract extends Yaf_Controller_Abstract {
 	/* constants */
 
 	/* properties */
@@ -650,7 +650,7 @@ abstract class Yaf_Action_Abstract extends Yaf_Controller_Abstract {
 	}
 }
 
-abstract class Yaf_Config_Abstract { 
+abstract class Yaf_Config_Abstract {
 	/* constants */
 
 	/* properties */
@@ -668,7 +668,7 @@ abstract class Yaf_Config_Abstract {
 	}
 }
 
-final class Yaf_Config_Ini extends Yaf_Config_Abstract implements Iterator, Traversable, ArrayAccess, Countable { 
+final class Yaf_Config_Ini extends Yaf_Config_Abstract implements Iterator, Traversable, ArrayAccess, Countable {
 	/* constants */
 
 	/* properties */
@@ -714,7 +714,7 @@ final class Yaf_Config_Ini extends Yaf_Config_Abstract implements Iterator, Trav
 	}
 }
 
-final class Yaf_Config_Simple extends Yaf_Config_Abstract implements Iterator, Traversable, ArrayAccess, Countable { 
+final class Yaf_Config_Simple extends Yaf_Config_Abstract implements Iterator, Traversable, ArrayAccess, Countable {
 	/* constants */
 
 	/* properties */
@@ -760,7 +760,7 @@ final class Yaf_Config_Simple extends Yaf_Config_Abstract implements Iterator, T
 	}
 }
 
-final class Yaf_View_Simple implements Yaf_View_Interface { 
+final class Yaf_View_Simple implements Yaf_View_Interface {
 	/* constants */
 
 	/* properties */
@@ -797,7 +797,7 @@ final class Yaf_View_Simple implements Yaf_View_Interface {
 	}
 }
 
-final class Yaf_Router { 
+final class Yaf_Router {
 	/* constants */
 
 	/* properties */
@@ -821,7 +821,7 @@ final class Yaf_Router {
 	}
 }
 
-class Yaf_Route_Static implements Yaf_Router { 
+class Yaf_Route_Static implements Yaf_Router {
 	/* constants */
 
 	/* properties */
@@ -845,7 +845,7 @@ class Yaf_Route_Static implements Yaf_Router {
 	}
 }
 
-final class Yaf_Route_Simple implements Yaf_Route_Interface { 
+final class Yaf_Route_Simple implements Yaf_Route_Interface {
 	/* constants */
 
 	/* properties */
@@ -860,7 +860,7 @@ final class Yaf_Route_Simple implements Yaf_Route_Interface {
 	}
 }
 
-final class Yaf_Route_Supervar implements Yaf_Route_Interface { 
+final class Yaf_Route_Supervar implements Yaf_Route_Interface {
 	/* constants */
 
 	/* properties */
@@ -873,7 +873,7 @@ final class Yaf_Route_Supervar implements Yaf_Route_Interface {
 	}
 }
 
-final class Yaf_Route_Rewrite extends Yaf_Route_Interface implements Yaf_Route_Interface { 
+final class Yaf_Route_Rewrite extends Yaf_Route_Interface implements Yaf_Route_Interface {
 	/* constants */
 
 	/* properties */
@@ -888,7 +888,7 @@ final class Yaf_Route_Rewrite extends Yaf_Route_Interface implements Yaf_Route_I
 	}
 }
 
-final class Yaf_Route_Regex extends Yaf_Route_Interface implements Yaf_Route_Interface { 
+final class Yaf_Route_Regex extends Yaf_Route_Interface implements Yaf_Route_Interface {
 	/* constants */
 
 	/* properties */
@@ -904,7 +904,7 @@ final class Yaf_Route_Regex extends Yaf_Route_Interface implements Yaf_Route_Int
 	}
 }
 
-final class Yaf_Route_Map implements Yaf_Route_Interface { 
+final class Yaf_Route_Map implements Yaf_Route_Interface {
 	/* constants */
 
 	/* properties */
@@ -918,7 +918,7 @@ final class Yaf_Route_Map implements Yaf_Route_Interface {
 	}
 }
 
-abstract class Yaf_Plugin_Abstract { 
+abstract class Yaf_Plugin_Abstract {
 	/* constants */
 
 	/* properties */
@@ -940,7 +940,7 @@ abstract class Yaf_Plugin_Abstract {
 	}
 }
 
-final class Yaf_Registry { 
+final class Yaf_Registry {
 	/* constants */
 
 	/* properties */
@@ -962,7 +962,7 @@ final class Yaf_Registry {
 	}
 }
 
-final class Yaf_Session implements Iterator, Traversable, ArrayAccess, Countable { 
+final class Yaf_Session implements Iterator, Traversable, ArrayAccess, Countable {
 	/* constants */
 
 	/* properties */
@@ -1021,7 +1021,7 @@ final class Yaf_Session implements Iterator, Traversable, ArrayAccess, Countable
 	}
 }
 
-class Yaf_Exception extends Exception { 
+class Yaf_Exception extends Exception {
 	/* constants */
 
 	/* properties */
@@ -1054,7 +1054,7 @@ class Yaf_Exception extends Exception {
 	}
 }
 
-class Yaf_Exception_StartupError extends Yaf_Exception { 
+class Yaf_Exception_StartupError extends Yaf_Exception {
 	/* constants */
 
 	/* properties */
@@ -1087,7 +1087,7 @@ class Yaf_Exception_StartupError extends Yaf_Exception {
 	}
 }
 
-class Yaf_Exception_RouterFailed extends Yaf_Exception { 
+class Yaf_Exception_RouterFailed extends Yaf_Exception {
 	/* constants */
 
 	/* properties */
@@ -1120,7 +1120,7 @@ class Yaf_Exception_RouterFailed extends Yaf_Exception {
 	}
 }
 
-class Yaf_Exception_DispatchFailed extends Yaf_Exception { 
+class Yaf_Exception_DispatchFailed extends Yaf_Exception {
 	/* constants */
 
 	/* properties */
@@ -1153,7 +1153,7 @@ class Yaf_Exception_DispatchFailed extends Yaf_Exception {
 	}
 }
 
-class Yaf_Exception_LoadFailed extends Yaf_Exception { 
+class Yaf_Exception_LoadFailed extends Yaf_Exception {
 	/* constants */
 
 	/* properties */
@@ -1186,7 +1186,7 @@ class Yaf_Exception_LoadFailed extends Yaf_Exception {
 	}
 }
 
-class Yaf_Exception_LoadFailed_Module extends Yaf_Exception_LoadFailed { 
+class Yaf_Exception_LoadFailed_Module extends Yaf_Exception_LoadFailed {
 	/* constants */
 
 	/* properties */
@@ -1219,7 +1219,7 @@ class Yaf_Exception_LoadFailed_Module extends Yaf_Exception_LoadFailed {
 	}
 }
 
-class Yaf_Exception_LoadFailed_Controller extends Yaf_Exception_LoadFailed { 
+class Yaf_Exception_LoadFailed_Controller extends Yaf_Exception_LoadFailed {
 	/* constants */
 
 	/* properties */
@@ -1252,7 +1252,7 @@ class Yaf_Exception_LoadFailed_Controller extends Yaf_Exception_LoadFailed {
 	}
 }
 
-class Yaf_Exception_LoadFailed_Action extends Yaf_Exception_LoadFailed { 
+class Yaf_Exception_LoadFailed_Action extends Yaf_Exception_LoadFailed {
 	/* constants */
 
 	/* properties */
@@ -1285,7 +1285,7 @@ class Yaf_Exception_LoadFailed_Action extends Yaf_Exception_LoadFailed {
 	}
 }
 
-class Yaf_Exception_LoadFailed_View extends Yaf_Exception_LoadFailed { 
+class Yaf_Exception_LoadFailed_View extends Yaf_Exception_LoadFailed {
 	/* constants */
 
 	/* properties */
@@ -1318,7 +1318,7 @@ class Yaf_Exception_LoadFailed_View extends Yaf_Exception_LoadFailed {
 	}
 }
 
-class Yaf_Exception_TypeError extends Yaf_Exception { 
+class Yaf_Exception_TypeError extends Yaf_Exception {
 	/* constants */
 
 	/* properties */
